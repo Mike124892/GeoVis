@@ -57,6 +57,6 @@ Example:
 You can refer to the python script and the data files in the [data](/data) directory for aid in merging datasets to fit this need.
 
 ## Additional Notes
-- Ensure that you have a valid Cesium Ion access token set in [index.js](/src/index.js) (if you are experiencing issues, it may be because my provided token is no longer active).
+- Ensure that you have a valid Cesium Ion access token set in [index.js](/src/index.js) (if you are experiencing issues, it may be because my provided token is no longer active). You can get your own access token at [Cesium](https://cesium.com/).
 - The application uses CesiumJS for rendering the 3D globe and requires an internet vonnection to connect imagery data.
 - Customize the visualization by modifying the code in [index.js](/src/index.js).
