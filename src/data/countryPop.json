@@ -1,1730 +1,1298 @@
 [
-    [
-        "Aruba",
-        [
-            12.5,
-            -69.96666666,
-            106445.0
-        ]
-    ],
-    [
-        "Afghanistan",
-        [
-            33.0,
-            65.0,
-            41128771.0
-        ]
-    ],
-    [
-        "Angola",
-        [
-            -12.5,
-            18.5,
-            35588987.0
-        ]
-    ],
-    [
-        "Albania",
-        [
-            41.0,
-            20.0,
-            2777689.0
-        ]
-    ],
-    [
-        "Andorra",
-        [
-            42.5,
-            1.5,
-            79824.0
-        ]
-    ],
-    [
-        "United Arab Emirates",
-        [
-            24.0,
-            54.0,
-            9441129.0
-        ]
-    ],
-    [
-        "Argentina",
-        [
-            -34.0,
-            -64.0,
-            46234830.0
-        ]
-    ],
-    [
-        "Armenia",
-        [
-            40.0,
-            45.0,
-            2780469.0
-        ]
-    ],
-    [
-        "American Samoa",
-        [
-            -14.33333333,
-            -170.0,
-            44273.0
-        ]
-    ],
-    [
-        "Antigua and Barbuda",
-        [
-            17.05,
-            -61.8,
-            93763.0
-        ]
-    ],
-    [
-        "Australia",
-        [
-            -27.0,
-            133.0,
-            26005540.0
-        ]
-    ],
-    [
-        "Austria",
-        [
-            47.33333333,
-            13.33333333,
-            9041851.0
-        ]
-    ],
-    [
-        "Azerbaijan",
-        [
-            40.5,
-            47.5,
-            10141756.0
-        ]
-    ],
-    [
-        "Burundi",
-        [
-            -3.5,
-            30.0,
-            12889576.0
-        ]
-    ],
-    [
-        "Belgium",
-        [
-            50.83333333,
-            4.0,
-            11685814.0
-        ]
-    ],
-    [
-        "Benin",
-        [
-            9.5,
-            2.25,
-            13352864.0
-        ]
-    ],
-    [
-        "Burkina Faso",
-        [
-            13.0,
-            -2.0,
-            22673762.0
-        ]
-    ],
-    [
-        "Bangladesh",
-        [
-            24.0,
-            90.0,
-            171186372.0
-        ]
-    ],
-    [
-        "Bulgaria",
-        [
-            43.0,
-            25.0,
-            6465097.0
-        ]
-    ],
-    [
-        "Bahrain",
-        [
-            26.0,
-            50.55,
-            1472233.0
-        ]
-    ],
-    [
-        "The Bahamas",
-        [
-            24.25,
-            -76.0,
-            409984.0
-        ]
-    ],
-    [
-        "Bosnia and Herzegovina",
-        [
-            44.0,
-            18.0,
-            3233526.0
-        ]
-    ],
-    [
-        "Belarus",
-        [
-            53.0,
-            28.0,
-            9228071.0
-        ]
-    ],
-    [
-        "Belize",
-        [
-            17.25,
-            -88.75,
-            405272.0
-        ]
-    ],
-    [
-        "Bermuda",
-        [
-            32.33333333,
-            -64.75,
-            63532.0
-        ]
-    ],
-    [
-        "Bolivia",
-        [
-            -17.0,
-            -65.0,
-            12224110.0
-        ]
-    ],
-    [
-        "Brazil",
-        [
-            -10.0,
-            -55.0,
-            215313498.0
-        ]
-    ],
-    [
-        "Barbados",
-        [
-            13.16666666,
-            -59.53333333,
-            281635.0
-        ]
-    ],
-    [
-        "Brunei",
-        [
-            4.5,
-            114.66666666,
-            449002.0
-        ]
-    ],
-    [
-        "Bhutan",
-        [
-            27.5,
-            90.5,
-            782455.0
-        ]
-    ],
-    [
-        "Botswana",
-        [
-            -22.0,
-            24.0,
-            2630296.0
-        ]
-    ],
-    [
-        "Central African Republic",
-        [
-            7.0,
-            21.0,
-            5579144.0
-        ]
-    ],
-    [
-        "Canada",
-        [
-            60.0,
-            -95.0,
-            38929902.0
-        ]
-    ],
-    [
-        "Switzerland",
-        [
-            47.0,
-            8.0,
-            8775760.0
-        ]
-    ],
-    [
-        "Chile",
-        [
-            -30.0,
-            -71.0,
-            19603733.0
-        ]
-    ],
-    [
-        "China",
-        [
-            35.0,
-            105.0,
-            1412175000.0
-        ]
-    ],
-    [
-        "Cote D'Ivoire (Ivory Coast)",
-        [
-            8.0,
-            -5.0,
-            28160542.0
-        ]
-    ],
-    [
-        "Cameroon",
-        [
-            6.0,
-            12.0,
-            27914536.0
-        ]
-    ],
-    [
-        "Democratic Republic of the Congo",
-        [
-            0.0,
-            25.0,
-            99010212.0
-        ]
-    ],
-    [
-        "Congo",
-        [
-            -1.0,
-            15.0,
-            5970424.0
-        ]
-    ],
-    [
-        "Colombia",
-        [
-            4.0,
-            -72.0,
-            51874024.0
-        ]
-    ],
-    [
-        "Comoros",
-        [
-            -12.16666666,
-            44.25,
-            836774.0
-        ]
-    ],
-    [
-        "Cape Verde",
-        [
-            16.0,
-            -24.0,
-            593149.0
-        ]
-    ],
-    [
-        "Costa Rica",
-        [
-            10.0,
-            -84.0,
-            5180829.0
-        ]
-    ],
-    [
-        "Cuba",
-        [
-            21.5,
-            -80.0,
-            11212191.0
-        ]
-    ],
-    [
-        "Cura\u00e7ao",
-        [
-            12.116667,
-            -68.933333,
-            149996.0
-        ]
-    ],
-    [
-        "Cayman Islands",
-        [
-            19.5,
-            -80.5,
-            68706.0
-        ]
-    ],
-    [
-        "Cyprus",
-        [
-            35.0,
-            33.0,
-            1251488.0
-        ]
-    ],
-    [
-        "Czech Republic",
-        [
-            49.75,
-            15.5,
-            10672118.0
-        ]
-    ],
-    [
-        "Germany",
-        [
-            51.0,
-            9.0,
-            83797985.0
-        ]
-    ],
-    [
-        "Djibouti",
-        [
-            11.5,
-            43.0,
-            1120849.0
-        ]
-    ],
-    [
-        "Dominica",
-        [
-            15.41666666,
-            -61.33333333,
-            72737.0
-        ]
-    ],
-    [
-        "Denmark",
-        [
-            56.0,
-            10.0,
-            5903037.0
-        ]
-    ],
-    [
-        "Dominican Republic",
-        [
-            19.0,
-            -70.66666666,
-            11228821.0
-        ]
-    ],
-    [
-        "Algeria",
-        [
-            28.0,
-            3.0,
-            44903225.0
-        ]
-    ],
-    [
-        "Ecuador",
-        [
-            -2.0,
-            -77.5,
-            18001000.0
-        ]
-    ],
-    [
-        "Egypt",
-        [
-            27.0,
-            30.0,
-            110990103.0
-        ]
-    ],
-    [
-        "Eritrea",
-        [
-            15.0,
-            39.0,
-            3684032.0
-        ]
-    ],
-    [
-        "Spain",
-        [
-            40.0,
-            -4.0,
-            47778340.0
-        ]
-    ],
-    [
-        "Estonia",
-        [
-            59.0,
-            26.0,
-            1348840.0
-        ]
-    ],
-    [
-        "Ethiopia",
-        [
-            8.0,
-            38.0,
-            123379924.0
-        ]
-    ],
-    [
-        "Finland",
-        [
-            64.0,
-            26.0,
-            5556106.0
-        ]
-    ],
-    [
-        "Fiji Islands",
-        [
-            -18.0,
-            175.0,
-            929766.0
-        ]
-    ],
-    [
-        "France",
-        [
-            46.0,
-            2.0,
-            67971311.0
-        ]
-    ],
-    [
-        "Faroe Islands",
-        [
-            62.0,
-            -7.0,
-            53090.0
-        ]
-    ],
-    [
-        "Micronesia",
-        [
-            6.91666666,
-            158.25,
-            114164.0
-        ]
-    ],
-    [
-        "Gabon",
-        [
-            -1.0,
-            11.75,
-            2388992.0
-        ]
-    ],
-    [
-        "United Kingdom",
-        [
-            54.0,
-            -2.0,
-            66971395.0
-        ]
-    ],
-    [
-        "Georgia",
-        [
-            42.0,
-            43.5,
-            3712502.0
-        ]
-    ],
-    [
-        "Ghana",
-        [
-            8.0,
-            -2.0,
-            33475870.0
-        ]
-    ],
-    [
-        "Gibraltar",
-        [
-            36.13333333,
-            -5.35,
-            32649.0
-        ]
-    ],
-    [
-        "Guinea",
-        [
-            11.0,
-            -10.0,
-            13859341.0
-        ]
-    ],
-    [
-        "Gambia The",
-        [
-            13.46666666,
-            -16.56666666,
-            2705992.0
-        ]
-    ],
-    [
-        "Guinea-Bissau",
-        [
-            12.0,
-            -15.0,
-            2105566.0
-        ]
-    ],
-    [
-        "Equatorial Guinea",
-        [
-            2.0,
-            10.0,
-            1674908.0
-        ]
-    ],
-    [
-        "Greece",
-        [
-            39.0,
-            22.0,
-            10426919.0
-        ]
-    ],
-    [
-        "Grenada",
-        [
-            12.11666666,
-            -61.66666666,
-            125438.0
-        ]
-    ],
-    [
-        "Greenland",
-        [
-            72.0,
-            -40.0,
-            56661.0
-        ]
-    ],
-    [
-        "Guatemala",
-        [
-            15.5,
-            -90.25,
-            17357886.0
-        ]
-    ],
-    [
-        "Guam",
-        [
-            13.46666666,
-            144.78333333,
-            171774.0
-        ]
-    ],
-    [
-        "Guyana",
-        [
-            5.0,
-            -59.0,
-            808726.0
-        ]
-    ],
-    [
-        "Hong Kong S.A.R.",
-        [
-            22.25,
-            114.16666666,
-            7346100.0
-        ]
-    ],
-    [
-        "Honduras",
-        [
-            15.0,
-            -86.5,
-            10432860.0
-        ]
-    ],
-    [
-        "Croatia",
-        [
-            45.16666666,
-            15.5,
-            3855600.0
-        ]
-    ],
-    [
-        "Haiti",
-        [
-            19.0,
-            -72.41666666,
-            11584996.0
-        ]
-    ],
-    [
-        "Hungary",
-        [
-            47.0,
-            20.0,
-            9643048.0
-        ]
-    ],
-    [
-        "Indonesia",
-        [
-            -5.0,
-            120.0,
-            275501339.0
-        ]
-    ],
-    [
-        "Man (Isle of)",
-        [
-            54.25,
-            -4.5,
-            84519.0
-        ]
-    ],
-    [
-        "India",
-        [
-            20.0,
-            77.0,
-            1417173173.0
-        ]
-    ],
-    [
-        "Ireland",
-        [
-            53.0,
-            -8.0,
-            5127170.0
-        ]
-    ],
-    [
-        "Iran",
-        [
-            32.0,
-            53.0,
-            88550570.0
-        ]
-    ],
-    [
-        "Iraq",
-        [
-            33.0,
-            44.0,
-            44496122.0
-        ]
-    ],
-    [
-        "Iceland",
-        [
-            65.0,
-            -18.0,
-            382003.0
-        ]
-    ],
-    [
-        "Israel",
-        [
-            31.5,
-            34.75,
-            9557500.0
-        ]
-    ],
-    [
-        "Italy",
-        [
-            42.83333333,
-            12.83333333,
-            58940425.0
-        ]
-    ],
-    [
-        "Jamaica",
-        [
-            18.25,
-            -77.5,
-            2827377.0
-        ]
-    ],
-    [
-        "Jordan",
-        [
-            31.0,
-            36.0,
-            11285869.0
-        ]
-    ],
-    [
-        "Japan",
-        [
-            36.0,
-            138.0,
-            125124989.0
-        ]
-    ],
-    [
-        "Kazakhstan",
-        [
-            48.0,
-            68.0,
-            19621972.0
-        ]
-    ],
-    [
-        "Kenya",
-        [
-            1.0,
-            38.0,
-            54027487.0
-        ]
-    ],
-    [
-        "Kyrgyzstan",
-        [
-            41.0,
-            75.0,
-            6974900.0
-        ]
-    ],
-    [
-        "Cambodia",
-        [
-            13.0,
-            105.0,
-            16767842.0
-        ]
-    ],
-    [
-        "Kiribati",
-        [
-            1.41666666,
-            173.0,
-            131232.0
-        ]
-    ],
-    [
-        "Saint Kitts and Nevis",
-        [
-            17.33333333,
-            -62.75,
-            47657.0
-        ]
-    ],
-    [
-        "South Korea",
-        [
-            37.0,
-            127.5,
-            51628117.0
-        ]
-    ],
-    [
-        "Kuwait",
-        [
-            29.5,
-            45.75,
-            4268873.0
-        ]
-    ],
-    [
-        "Laos",
-        [
-            18.0,
-            105.0,
-            7529475.0
-        ]
-    ],
-    [
-        "Lebanon",
-        [
-            33.83333333,
-            35.83333333,
-            5489739.0
-        ]
-    ],
-    [
-        "Liberia",
-        [
-            6.5,
-            -9.5,
-            5302681.0
-        ]
-    ],
-    [
-        "Libya",
-        [
-            25.0,
-            17.0,
-            6812341.0
-        ]
-    ],
-    [
-        "Saint Lucia",
-        [
-            13.88333333,
-            -60.96666666,
-            179857.0
-        ]
-    ],
-    [
-        "Liechtenstein",
-        [
-            47.26666666,
-            9.53333333,
-            39327.0
-        ]
-    ],
-    [
-        "Sri Lanka",
-        [
-            7.0,
-            81.0,
-            22181000.0
-        ]
-    ],
-    [
-        "Lesotho",
-        [
-            -29.5,
-            28.5,
-            2305825.0
-        ]
-    ],
-    [
-        "Lithuania",
-        [
-            56.0,
-            24.0,
-            2831639.0
-        ]
-    ],
-    [
-        "Luxembourg",
-        [
-            49.75,
-            6.16666666,
-            653103.0
-        ]
-    ],
-    [
-        "Latvia",
-        [
-            57.0,
-            25.0,
-            1879383.0
-        ]
-    ],
-    [
-        "Macau S.A.R.",
-        [
-            22.16666666,
-            113.55,
-            695168.0
-        ]
-    ],
-    [
-        "Saint-Martin (French part)",
-        [
-            18.08333333,
-            -63.95,
-            31791.0
-        ]
-    ],
-    [
-        "Morocco",
-        [
-            32.0,
-            -5.0,
-            37457971.0
-        ]
-    ],
-    [
-        "Monaco",
-        [
-            43.73333333,
-            7.4,
-            36469.0
-        ]
-    ],
-    [
-        "Moldova",
-        [
-            47.0,
-            29.0,
-            2538894.0
-        ]
-    ],
-    [
-        "Madagascar",
-        [
-            -20.0,
-            47.0,
-            29611714.0
-        ]
-    ],
-    [
-        "Maldives",
-        [
-            3.25,
-            73.0,
-            523787.0
-        ]
-    ],
-    [
-        "Mexico",
-        [
-            23.0,
-            -102.0,
-            127504125.0
-        ]
-    ],
-    [
-        "Marshall Islands",
-        [
-            9.0,
-            168.0,
-            41569.0
-        ]
-    ],
-    [
-        "North Macedonia",
-        [
-            41.83333333,
-            22.0,
-            2057679.0
-        ]
-    ],
-    [
-        "Mali",
-        [
-            17.0,
-            -4.0,
-            22593590.0
-        ]
-    ],
-    [
-        "Malta",
-        [
-            35.83333333,
-            14.58333333,
-            531113.0
-        ]
-    ],
-    [
-        "Myanmar",
-        [
-            22.0,
-            98.0,
-            54179306.0
-        ]
-    ],
-    [
-        "Montenegro",
-        [
-            42.5,
-            19.3,
-            617213.0
-        ]
-    ],
-    [
-        "Mongolia",
-        [
-            46.0,
-            105.0,
-            3398366.0
-        ]
-    ],
-    [
-        "Northern Mariana Islands",
-        [
-            15.2,
-            145.75,
-            49551.0
-        ]
-    ],
-    [
-        "Mozambique",
-        [
-            -18.25,
-            35.0,
-            32969518.0
-        ]
-    ],
-    [
-        "Mauritania",
-        [
-            20.0,
-            -12.0,
-            4736139.0
-        ]
-    ],
-    [
-        "Mauritius",
-        [
-            -20.28333333,
-            57.55,
-            1262523.0
-        ]
-    ],
-    [
-        "Malawi",
-        [
-            -13.5,
-            34.0,
-            20405317.0
-        ]
-    ],
-    [
-        "Malaysia",
-        [
-            2.5,
-            112.5,
-            33938221.0
-        ]
-    ],
-    [
-        "Namibia",
-        [
-            -22.0,
-            17.0,
-            2567012.0
-        ]
-    ],
-    [
-        "New Caledonia",
-        [
-            -21.5,
-            165.5,
-            269220.0
-        ]
-    ],
-    [
-        "Niger",
-        [
-            16.0,
-            8.0,
-            26207977.0
-        ]
-    ],
-    [
-        "Nigeria",
-        [
-            10.0,
-            8.0,
-            218541212.0
-        ]
-    ],
-    [
-        "Nicaragua",
-        [
-            13.0,
-            -85.0,
-            6948392.0
-        ]
-    ],
-    [
-        "Netherlands",
-        [
-            52.5,
-            5.75,
-            17700982.0
-        ]
-    ],
-    [
-        "Norway",
-        [
-            62.0,
-            10.0,
-            5457127.0
-        ]
-    ],
-    [
-        "Nepal",
-        [
-            28.0,
-            84.0,
-            30547580.0
-        ]
-    ],
-    [
-        "Nauru",
-        [
-            -0.53333333,
-            166.91666666,
-            12668.0
-        ]
-    ],
-    [
-        "New Zealand",
-        [
-            -41.0,
-            174.0,
-            5124100.0
-        ]
-    ],
-    [
-        "Oman",
-        [
-            21.0,
-            57.0,
-            4576298.0
-        ]
-    ],
-    [
-        "Pakistan",
-        [
-            30.0,
-            70.0,
-            235824862.0
-        ]
-    ],
-    [
-        "Panama",
-        [
-            9.0,
-            -80.0,
-            4408581.0
-        ]
-    ],
-    [
-        "Peru",
-        [
-            -10.0,
-            -76.0,
-            34049588.0
-        ]
-    ],
-    [
-        "Philippines",
-        [
-            13.0,
-            122.0,
-            115559009.0
-        ]
-    ],
-    [
-        "Palau",
-        [
-            7.5,
-            134.5,
-            18055.0
-        ]
-    ],
-    [
-        "Papua New Guinea",
-        [
-            -6.0,
-            147.0,
-            10142619.0
-        ]
-    ],
-    [
-        "Poland",
-        [
-            52.0,
-            20.0,
-            36821749.0
-        ]
-    ],
-    [
-        "Puerto Rico",
-        [
-            18.25,
-            -66.5,
-            3221789.0
-        ]
-    ],
-    [
-        "North Korea",
-        [
-            40.0,
-            127.0,
-            26069416.0
-        ]
-    ],
-    [
-        "Portugal",
-        [
-            39.5,
-            -8.0,
-            10409704.0
-        ]
-    ],
-    [
-        "Paraguay",
-        [
-            -23.0,
-            -58.0,
-            6780744.0
-        ]
-    ],
-    [
-        "Palestinian Territory Occupied",
-        [
-            31.9,
-            35.2,
-            5043612.0
-        ]
-    ],
-    [
-        "French Polynesia",
-        [
-            -15.0,
-            -140.0,
-            306279.0
-        ]
-    ],
-    [
-        "Qatar",
-        [
-            25.5,
-            51.25,
-            2695122.0
-        ]
-    ],
-    [
-        "Romania",
-        [
-            46.0,
-            25.0,
-            19047009.0
-        ]
-    ],
-    [
-        "Russia",
-        [
-            60.0,
-            100.0,
-            144236933.0
-        ]
-    ],
-    [
-        "Rwanda",
-        [
-            -2.0,
-            30.0,
-            13776698.0
-        ]
-    ],
-    [
-        "Saudi Arabia",
-        [
-            25.0,
-            45.0,
-            36408820.0
-        ]
-    ],
-    [
-        "Sudan",
-        [
-            15.0,
-            30.0,
-            46874204.0
-        ]
-    ],
-    [
-        "Senegal",
-        [
-            14.0,
-            -14.0,
-            17316449.0
-        ]
-    ],
-    [
-        "Singapore",
-        [
-            1.36666666,
-            103.8,
-            5637022.0
-        ]
-    ],
-    [
-        "Solomon Islands",
-        [
-            -8.0,
-            159.0,
-            724273.0
-        ]
-    ],
-    [
-        "Sierra Leone",
-        [
-            8.5,
-            -11.5,
-            8605718.0
-        ]
-    ],
-    [
-        "El Salvador",
-        [
-            13.83333333,
-            -88.91666666,
-            6336392.0
-        ]
-    ],
-    [
-        "San Marino",
-        [
-            43.76666666,
-            12.41666666,
-            33660.0
-        ]
-    ],
-    [
-        "Somalia",
-        [
-            10.0,
-            49.0,
-            17597511.0
-        ]
-    ],
-    [
-        "Serbia",
-        [
-            44.0,
-            21.0,
-            6664449.0
-        ]
-    ],
-    [
-        "South Sudan",
-        [
-            7.0,
-            30.0,
-            10913164.0
-        ]
-    ],
-    [
-        "Sao Tome and Principe",
-        [
-            1.0,
-            7.0,
-            227380.0
-        ]
-    ],
-    [
-        "Suriname",
-        [
-            4.0,
-            -56.0,
-            618040.0
-        ]
-    ],
-    [
-        "Slovakia",
-        [
-            48.66666666,
-            19.5,
-            5431752.0
-        ]
-    ],
-    [
-        "Slovenia",
-        [
-            46.11666666,
-            14.81666666,
-            2111986.0
-        ]
-    ],
-    [
-        "Sweden",
-        [
-            62.0,
-            15.0,
-            10486941.0
-        ]
-    ],
-    [
-        "Eswatini",
-        [
-            -26.5,
-            31.5,
-            1201670.0
-        ]
-    ],
-    [
-        "Sint Maarten (Dutch part)",
-        [
-            18.033333,
-            -63.05,
-            42848.0
-        ]
-    ],
-    [
-        "Seychelles",
-        [
-            -4.58333333,
-            55.66666666,
-            119878.0
-        ]
-    ],
-    [
-        "Syria",
-        [
-            35.0,
-            38.0,
-            22125249.0
-        ]
-    ],
-    [
-        "Turks and Caicos Islands",
-        [
-            21.75,
-            -71.58333333,
-            45703.0
-        ]
-    ],
-    [
-        "Chad",
-        [
-            15.0,
-            19.0,
-            17723315.0
-        ]
-    ],
-    [
-        "Togo",
-        [
-            8.0,
-            1.16666666,
-            8848699.0
-        ]
-    ],
-    [
-        "Thailand",
-        [
-            15.0,
-            100.0,
-            71697030.0
-        ]
-    ],
-    [
-        "Tajikistan",
-        [
-            39.0,
-            71.0,
-            9952787.0
-        ]
-    ],
-    [
-        "Turkmenistan",
-        [
-            40.0,
-            60.0,
-            6430770.0
-        ]
-    ],
-    [
-        "Timor-Leste",
-        [
-            -8.83333333,
-            125.91666666,
-            1341296.0
-        ]
-    ],
-    [
-        "Tonga",
-        [
-            -20.0,
-            -175.0,
-            106858.0
-        ]
-    ],
-    [
-        "Trinidad and Tobago",
-        [
-            11.0,
-            -61.0,
-            1531044.0
-        ]
-    ],
-    [
-        "Tunisia",
-        [
-            34.0,
-            9.0,
-            12356117.0
-        ]
-    ],
-    [
-        "Turkey",
-        [
-            39.0,
-            35.0,
-            84979913.0
-        ]
-    ],
-    [
-        "Tuvalu",
-        [
-            -8.0,
-            178.0,
-            11312.0
-        ]
-    ],
-    [
-        "Tanzania",
-        [
-            -6.0,
-            35.0,
-            65497748.0
-        ]
-    ],
-    [
-        "Uganda",
-        [
-            1.0,
-            32.0,
-            47249585.0
-        ]
-    ],
-    [
-        "Ukraine",
-        [
-            49.0,
-            32.0,
-            38000000.0
-        ]
-    ],
-    [
-        "Uruguay",
-        [
-            -33.0,
-            -56.0,
-            3422794.0
-        ]
-    ],
-    [
-        "United States",
-        [
-            38.0,
-            -97.0,
-            333287557.0
-        ]
-    ],
-    [
-        "Uzbekistan",
-        [
-            41.0,
-            64.0,
-            35648100.0
-        ]
-    ],
-    [
-        "Saint Vincent and the Grenadines",
-        [
-            13.25,
-            -61.2,
-            103948.0
-        ]
-    ],
-    [
-        "Venezuela",
-        [
-            8.0,
-            -66.0,
-            28301696.0
-        ]
-    ],
-    [
-        "Virgin Islands (British)",
-        [
-            18.431383,
-            -64.62305,
-            31305.0
-        ]
-    ],
-    [
-        "Virgin Islands (US)",
-        [
-            18.34,
-            -64.93,
-            105413.0
-        ]
-    ],
-    [
-        "Vietnam",
-        [
-            16.16666666,
-            107.83333333,
-            98186856.0
-        ]
-    ],
-    [
-        "Vanuatu",
-        [
-            -16.0,
-            167.0,
-            326740.0
-        ]
-    ],
-    [
-        "Samoa",
-        [
-            -13.58333333,
-            -172.33333333,
-            222382.0
-        ]
-    ],
-    [
-        "Kosovo",
-        [
-            42.5612909,
-            20.3403035,
-            1761985.0
-        ]
-    ],
-    [
-        "Yemen",
-        [
-            15.0,
-            48.0,
-            33696614.0
-        ]
-    ],
-    [
-        "South Africa",
-        [
-            -29.0,
-            24.0,
-            59893885.0
-        ]
-    ],
-    [
-        "Zambia",
-        [
-            -15.0,
-            30.0,
-            20017675.0
-        ]
-    ],
-    [
-        "Zimbabwe",
-        [
-            -20.0,
-            30.0,
-            16320537.0
-        ]
-    ]
+    {
+        "name": "Aruba",
+        "latitude": 12.5,
+        "longitude": -69.96666666,
+        "population": 106445.0
+    },
+    {
+        "name": "Afghanistan",
+        "latitude": 33.0,
+        "longitude": 65.0,
+        "population": 41128771.0
+    },
+    {
+        "name": "Angola",
+        "latitude": -12.5,
+        "longitude": 18.5,
+        "population": 35588987.0
+    },
+    {
+        "name": "Albania",
+        "latitude": 41.0,
+        "longitude": 20.0,
+        "population": 2777689.0
+    },
+    {
+        "name": "Andorra",
+        "latitude": 42.5,
+        "longitude": 1.5,
+        "population": 79824.0
+    },
+    {
+        "name": "United Arab Emirates",
+        "latitude": 24.0,
+        "longitude": 54.0,
+        "population": 9441129.0
+    },
+    {
+        "name": "Argentina",
+        "latitude": -34.0,
+        "longitude": -64.0,
+        "population": 46234830.0
+    },
+    {
+        "name": "Armenia",
+        "latitude": 40.0,
+        "longitude": 45.0,
+        "population": 2780469.0
+    },
+    {
+        "name": "American Samoa",
+        "latitude": -14.33333333,
+        "longitude": -170.0,
+        "population": 44273.0
+    },
+    {
+        "name": "Antigua and Barbuda",
+        "latitude": 17.05,
+        "longitude": -61.8,
+        "population": 93763.0
+    },
+    {
+        "name": "Australia",
+        "latitude": -27.0,
+        "longitude": 133.0,
+        "population": 26005540.0
+    },
+    {
+        "name": "Austria",
+        "latitude": 47.33333333,
+        "longitude": 13.33333333,
+        "population": 9041851.0
+    },
+    {
+        "name": "Azerbaijan",
+        "latitude": 40.5,
+        "longitude": 47.5,
+        "population": 10141756.0
+    },
+    {
+        "name": "Burundi",
+        "latitude": -3.5,
+        "longitude": 30.0,
+        "population": 12889576.0
+    },
+    {
+        "name": "Belgium",
+        "latitude": 50.83333333,
+        "longitude": 4.0,
+        "population": 11685814.0
+    },
+    {
+        "name": "Benin",
+        "latitude": 9.5,
+        "longitude": 2.25,
+        "population": 13352864.0
+    },
+    {
+        "name": "Burkina Faso",
+        "latitude": 13.0,
+        "longitude": -2.0,
+        "population": 22673762.0
+    },
+    {
+        "name": "Bangladesh",
+        "latitude": 24.0,
+        "longitude": 90.0,
+        "population": 171186372.0
+    },
+    {
+        "name": "Bulgaria",
+        "latitude": 43.0,
+        "longitude": 25.0,
+        "population": 6465097.0
+    },
+    {
+        "name": "Bahrain",
+        "latitude": 26.0,
+        "longitude": 50.55,
+        "population": 1472233.0
+    },
+    {
+        "name": "The Bahamas",
+        "latitude": 24.25,
+        "longitude": -76.0,
+        "population": 409984.0
+    },
+    {
+        "name": "Bosnia and Herzegovina",
+        "latitude": 44.0,
+        "longitude": 18.0,
+        "population": 3233526.0
+    },
+    {
+        "name": "Belarus",
+        "latitude": 53.0,
+        "longitude": 28.0,
+        "population": 9228071.0
+    },
+    {
+        "name": "Belize",
+        "latitude": 17.25,
+        "longitude": -88.75,
+        "population": 405272.0
+    },
+    {
+        "name": "Bermuda",
+        "latitude": 32.33333333,
+        "longitude": -64.75,
+        "population": 63532.0
+    },
+    {
+        "name": "Bolivia",
+        "latitude": -17.0,
+        "longitude": -65.0,
+        "population": 12224110.0
+    },
+    {
+        "name": "Brazil",
+        "latitude": -10.0,
+        "longitude": -55.0,
+        "population": 215313498.0
+    },
+    {
+        "name": "Barbados",
+        "latitude": 13.16666666,
+        "longitude": -59.53333333,
+        "population": 281635.0
+    },
+    {
+        "name": "Brunei",
+        "latitude": 4.5,
+        "longitude": 114.66666666,
+        "population": 449002.0
+    },
+    {
+        "name": "Bhutan",
+        "latitude": 27.5,
+        "longitude": 90.5,
+        "population": 782455.0
+    },
+    {
+        "name": "Botswana",
+        "latitude": -22.0,
+        "longitude": 24.0,
+        "population": 2630296.0
+    },
+    {
+        "name": "Central African Republic",
+        "latitude": 7.0,
+        "longitude": 21.0,
+        "population": 5579144.0
+    },
+    {
+        "name": "Canada",
+        "latitude": 60.0,
+        "longitude": -95.0,
+        "population": 38929902.0
+    },
+    {
+        "name": "Switzerland",
+        "latitude": 47.0,
+        "longitude": 8.0,
+        "population": 8775760.0
+    },
+    {
+        "name": "Chile",
+        "latitude": -30.0,
+        "longitude": -71.0,
+        "population": 19603733.0
+    },
+    {
+        "name": "China",
+        "latitude": 35.0,
+        "longitude": 105.0,
+        "population": 1412175000.0
+    },
+    {
+        "name": "Cote D'Ivoire (Ivory Coast)",
+        "latitude": 8.0,
+        "longitude": -5.0,
+        "population": 28160542.0
+    },
+    {
+        "name": "Cameroon",
+        "latitude": 6.0,
+        "longitude": 12.0,
+        "population": 27914536.0
+    },
+    {
+        "name": "Democratic Republic of the Congo",
+        "latitude": 0.0,
+        "longitude": 25.0,
+        "population": 99010212.0
+    },
+    {
+        "name": "Congo",
+        "latitude": -1.0,
+        "longitude": 15.0,
+        "population": 5970424.0
+    },
+    {
+        "name": "Colombia",
+        "latitude": 4.0,
+        "longitude": -72.0,
+        "population": 51874024.0
+    },
+    {
+        "name": "Comoros",
+        "latitude": -12.16666666,
+        "longitude": 44.25,
+        "population": 836774.0
+    },
+    {
+        "name": "Cape Verde",
+        "latitude": 16.0,
+        "longitude": -24.0,
+        "population": 593149.0
+    },
+    {
+        "name": "Costa Rica",
+        "latitude": 10.0,
+        "longitude": -84.0,
+        "population": 5180829.0
+    },
+    {
+        "name": "Cuba",
+        "latitude": 21.5,
+        "longitude": -80.0,
+        "population": 11212191.0
+    },
+    {
+        "name": "Cura\u00e7ao",
+        "latitude": 12.116667,
+        "longitude": -68.933333,
+        "population": 149996.0
+    },
+    {
+        "name": "Cayman Islands",
+        "latitude": 19.5,
+        "longitude": -80.5,
+        "population": 68706.0
+    },
+    {
+        "name": "Cyprus",
+        "latitude": 35.0,
+        "longitude": 33.0,
+        "population": 1251488.0
+    },
+    {
+        "name": "Czech Republic",
+        "latitude": 49.75,
+        "longitude": 15.5,
+        "population": 10672118.0
+    },
+    {
+        "name": "Germany",
+        "latitude": 51.0,
+        "longitude": 9.0,
+        "population": 83797985.0
+    },
+    {
+        "name": "Djibouti",
+        "latitude": 11.5,
+        "longitude": 43.0,
+        "population": 1120849.0
+    },
+    {
+        "name": "Dominica",
+        "latitude": 15.41666666,
+        "longitude": -61.33333333,
+        "population": 72737.0
+    },
+    {
+        "name": "Denmark",
+        "latitude": 56.0,
+        "longitude": 10.0,
+        "population": 5903037.0
+    },
+    {
+        "name": "Dominican Republic",
+        "latitude": 19.0,
+        "longitude": -70.66666666,
+        "population": 11228821.0
+    },
+    {
+        "name": "Algeria",
+        "latitude": 28.0,
+        "longitude": 3.0,
+        "population": 44903225.0
+    },
+    {
+        "name": "Ecuador",
+        "latitude": -2.0,
+        "longitude": -77.5,
+        "population": 18001000.0
+    },
+    {
+        "name": "Egypt",
+        "latitude": 27.0,
+        "longitude": 30.0,
+        "population": 110990103.0
+    },
+    {
+        "name": "Eritrea",
+        "latitude": 15.0,
+        "longitude": 39.0,
+        "population": 3684032.0
+    },
+    {
+        "name": "Spain",
+        "latitude": 40.0,
+        "longitude": -4.0,
+        "population": 47778340.0
+    },
+    {
+        "name": "Estonia",
+        "latitude": 59.0,
+        "longitude": 26.0,
+        "population": 1348840.0
+    },
+    {
+        "name": "Ethiopia",
+        "latitude": 8.0,
+        "longitude": 38.0,
+        "population": 123379924.0
+    },
+    {
+        "name": "Finland",
+        "latitude": 64.0,
+        "longitude": 26.0,
+        "population": 5556106.0
+    },
+    {
+        "name": "Fiji Islands",
+        "latitude": -18.0,
+        "longitude": 175.0,
+        "population": 929766.0
+    },
+    {
+        "name": "France",
+        "latitude": 46.0,
+        "longitude": 2.0,
+        "population": 67971311.0
+    },
+    {
+        "name": "Faroe Islands",
+        "latitude": 62.0,
+        "longitude": -7.0,
+        "population": 53090.0
+    },
+    {
+        "name": "Micronesia",
+        "latitude": 6.91666666,
+        "longitude": 158.25,
+        "population": 114164.0
+    },
+    {
+        "name": "Gabon",
+        "latitude": -1.0,
+        "longitude": 11.75,
+        "population": 2388992.0
+    },
+    {
+        "name": "United Kingdom",
+        "latitude": 54.0,
+        "longitude": -2.0,
+        "population": 66971395.0
+    },
+    {
+        "name": "Georgia",
+        "latitude": 42.0,
+        "longitude": 43.5,
+        "population": 3712502.0
+    },
+    {
+        "name": "Ghana",
+        "latitude": 8.0,
+        "longitude": -2.0,
+        "population": 33475870.0
+    },
+    {
+        "name": "Gibraltar",
+        "latitude": 36.13333333,
+        "longitude": -5.35,
+        "population": 32649.0
+    },
+    {
+        "name": "Guinea",
+        "latitude": 11.0,
+        "longitude": -10.0,
+        "population": 13859341.0
+    },
+    {
+        "name": "Gambia The",
+        "latitude": 13.46666666,
+        "longitude": -16.56666666,
+        "population": 2705992.0
+    },
+    {
+        "name": "Guinea-Bissau",
+        "latitude": 12.0,
+        "longitude": -15.0,
+        "population": 2105566.0
+    },
+    {
+        "name": "Equatorial Guinea",
+        "latitude": 2.0,
+        "longitude": 10.0,
+        "population": 1674908.0
+    },
+    {
+        "name": "Greece",
+        "latitude": 39.0,
+        "longitude": 22.0,
+        "population": 10426919.0
+    },
+    {
+        "name": "Grenada",
+        "latitude": 12.11666666,
+        "longitude": -61.66666666,
+        "population": 125438.0
+    },
+    {
+        "name": "Greenland",
+        "latitude": 72.0,
+        "longitude": -40.0,
+        "population": 56661.0
+    },
+    {
+        "name": "Guatemala",
+        "latitude": 15.5,
+        "longitude": -90.25,
+        "population": 17357886.0
+    },
+    {
+        "name": "Guam",
+        "latitude": 13.46666666,
+        "longitude": 144.78333333,
+        "population": 171774.0
+    },
+    {
+        "name": "Guyana",
+        "latitude": 5.0,
+        "longitude": -59.0,
+        "population": 808726.0
+    },
+    {
+        "name": "Hong Kong S.A.R.",
+        "latitude": 22.25,
+        "longitude": 114.16666666,
+        "population": 7346100.0
+    },
+    {
+        "name": "Honduras",
+        "latitude": 15.0,
+        "longitude": -86.5,
+        "population": 10432860.0
+    },
+    {
+        "name": "Croatia",
+        "latitude": 45.16666666,
+        "longitude": 15.5,
+        "population": 3855600.0
+    },
+    {
+        "name": "Haiti",
+        "latitude": 19.0,
+        "longitude": -72.41666666,
+        "population": 11584996.0
+    },
+    {
+        "name": "Hungary",
+        "latitude": 47.0,
+        "longitude": 20.0,
+        "population": 9643048.0
+    },
+    {
+        "name": "Indonesia",
+        "latitude": -5.0,
+        "longitude": 120.0,
+        "population": 275501339.0
+    },
+    {
+        "name": "Man (Isle of)",
+        "latitude": 54.25,
+        "longitude": -4.5,
+        "population": 84519.0
+    },
+    {
+        "name": "India",
+        "latitude": 20.0,
+        "longitude": 77.0,
+        "population": 1417173173.0
+    },
+    {
+        "name": "Ireland",
+        "latitude": 53.0,
+        "longitude": -8.0,
+        "population": 5127170.0
+    },
+    {
+        "name": "Iran",
+        "latitude": 32.0,
+        "longitude": 53.0,
+        "population": 88550570.0
+    },
+    {
+        "name": "Iraq",
+        "latitude": 33.0,
+        "longitude": 44.0,
+        "population": 44496122.0
+    },
+    {
+        "name": "Iceland",
+        "latitude": 65.0,
+        "longitude": -18.0,
+        "population": 382003.0
+    },
+    {
+        "name": "Israel",
+        "latitude": 31.5,
+        "longitude": 34.75,
+        "population": 9557500.0
+    },
+    {
+        "name": "Italy",
+        "latitude": 42.83333333,
+        "longitude": 12.83333333,
+        "population": 58940425.0
+    },
+    {
+        "name": "Jamaica",
+        "latitude": 18.25,
+        "longitude": -77.5,
+        "population": 2827377.0
+    },
+    {
+        "name": "Jordan",
+        "latitude": 31.0,
+        "longitude": 36.0,
+        "population": 11285869.0
+    },
+    {
+        "name": "Japan",
+        "latitude": 36.0,
+        "longitude": 138.0,
+        "population": 125124989.0
+    },
+    {
+        "name": "Kazakhstan",
+        "latitude": 48.0,
+        "longitude": 68.0,
+        "population": 19621972.0
+    },
+    {
+        "name": "Kenya",
+        "latitude": 1.0,
+        "longitude": 38.0,
+        "population": 54027487.0
+    },
+    {
+        "name": "Kyrgyzstan",
+        "latitude": 41.0,
+        "longitude": 75.0,
+        "population": 6974900.0
+    },
+    {
+        "name": "Cambodia",
+        "latitude": 13.0,
+        "longitude": 105.0,
+        "population": 16767842.0
+    },
+    {
+        "name": "Kiribati",
+        "latitude": 1.41666666,
+        "longitude": 173.0,
+        "population": 131232.0
+    },
+    {
+        "name": "Saint Kitts and Nevis",
+        "latitude": 17.33333333,
+        "longitude": -62.75,
+        "population": 47657.0
+    },
+    {
+        "name": "South Korea",
+        "latitude": 37.0,
+        "longitude": 127.5,
+        "population": 51628117.0
+    },
+    {
+        "name": "Kuwait",
+        "latitude": 29.5,
+        "longitude": 45.75,
+        "population": 4268873.0
+    },
+    {
+        "name": "Laos",
+        "latitude": 18.0,
+        "longitude": 105.0,
+        "population": 7529475.0
+    },
+    {
+        "name": "Lebanon",
+        "latitude": 33.83333333,
+        "longitude": 35.83333333,
+        "population": 5489739.0
+    },
+    {
+        "name": "Liberia",
+        "latitude": 6.5,
+        "longitude": -9.5,
+        "population": 5302681.0
+    },
+    {
+        "name": "Libya",
+        "latitude": 25.0,
+        "longitude": 17.0,
+        "population": 6812341.0
+    },
+    {
+        "name": "Saint Lucia",
+        "latitude": 13.88333333,
+        "longitude": -60.96666666,
+        "population": 179857.0
+    },
+    {
+        "name": "Liechtenstein",
+        "latitude": 47.26666666,
+        "longitude": 9.53333333,
+        "population": 39327.0
+    },
+    {
+        "name": "Sri Lanka",
+        "latitude": 7.0,
+        "longitude": 81.0,
+        "population": 22181000.0
+    },
+    {
+        "name": "Lesotho",
+        "latitude": -29.5,
+        "longitude": 28.5,
+        "population": 2305825.0
+    },
+    {
+        "name": "Lithuania",
+        "latitude": 56.0,
+        "longitude": 24.0,
+        "population": 2831639.0
+    },
+    {
+        "name": "Luxembourg",
+        "latitude": 49.75,
+        "longitude": 6.16666666,
+        "population": 653103.0
+    },
+    {
+        "name": "Latvia",
+        "latitude": 57.0,
+        "longitude": 25.0,
+        "population": 1879383.0
+    },
+    {
+        "name": "Macau S.A.R.",
+        "latitude": 22.16666666,
+        "longitude": 113.55,
+        "population": 695168.0
+    },
+    {
+        "name": "Saint-Martin (French part)",
+        "latitude": 18.08333333,
+        "longitude": -63.95,
+        "population": 31791.0
+    },
+    {
+        "name": "Morocco",
+        "latitude": 32.0,
+        "longitude": -5.0,
+        "population": 37457971.0
+    },
+    {
+        "name": "Monaco",
+        "latitude": 43.73333333,
+        "longitude": 7.4,
+        "population": 36469.0
+    },
+    {
+        "name": "Moldova",
+        "latitude": 47.0,
+        "longitude": 29.0,
+        "population": 2538894.0
+    },
+    {
+        "name": "Madagascar",
+        "latitude": -20.0,
+        "longitude": 47.0,
+        "population": 29611714.0
+    },
+    {
+        "name": "Maldives",
+        "latitude": 3.25,
+        "longitude": 73.0,
+        "population": 523787.0
+    },
+    {
+        "name": "Mexico",
+        "latitude": 23.0,
+        "longitude": -102.0,
+        "population": 127504125.0
+    },
+    {
+        "name": "Marshall Islands",
+        "latitude": 9.0,
+        "longitude": 168.0,
+        "population": 41569.0
+    },
+    {
+        "name": "North Macedonia",
+        "latitude": 41.83333333,
+        "longitude": 22.0,
+        "population": 2057679.0
+    },
+    {
+        "name": "Mali",
+        "latitude": 17.0,
+        "longitude": -4.0,
+        "population": 22593590.0
+    },
+    {
+        "name": "Malta",
+        "latitude": 35.83333333,
+        "longitude": 14.58333333,
+        "population": 531113.0
+    },
+    {
+        "name": "Myanmar",
+        "latitude": 22.0,
+        "longitude": 98.0,
+        "population": 54179306.0
+    },
+    {
+        "name": "Montenegro",
+        "latitude": 42.5,
+        "longitude": 19.3,
+        "population": 617213.0
+    },
+    {
+        "name": "Mongolia",
+        "latitude": 46.0,
+        "longitude": 105.0,
+        "population": 3398366.0
+    },
+    {
+        "name": "Northern Mariana Islands",
+        "latitude": 15.2,
+        "longitude": 145.75,
+        "population": 49551.0
+    },
+    {
+        "name": "Mozambique",
+        "latitude": -18.25,
+        "longitude": 35.0,
+        "population": 32969518.0
+    },
+    {
+        "name": "Mauritania",
+        "latitude": 20.0,
+        "longitude": -12.0,
+        "population": 4736139.0
+    },
+    {
+        "name": "Mauritius",
+        "latitude": -20.28333333,
+        "longitude": 57.55,
+        "population": 1262523.0
+    },
+    {
+        "name": "Malawi",
+        "latitude": -13.5,
+        "longitude": 34.0,
+        "population": 20405317.0
+    },
+    {
+        "name": "Malaysia",
+        "latitude": 2.5,
+        "longitude": 112.5,
+        "population": 33938221.0
+    },
+    {
+        "name": "Namibia",
+        "latitude": -22.0,
+        "longitude": 17.0,
+        "population": 2567012.0
+    },
+    {
+        "name": "New Caledonia",
+        "latitude": -21.5,
+        "longitude": 165.5,
+        "population": 269220.0
+    },
+    {
+        "name": "Niger",
+        "latitude": 16.0,
+        "longitude": 8.0,
+        "population": 26207977.0
+    },
+    {
+        "name": "Nigeria",
+        "latitude": 10.0,
+        "longitude": 8.0,
+        "population": 218541212.0
+    },
+    {
+        "name": "Nicaragua",
+        "latitude": 13.0,
+        "longitude": -85.0,
+        "population": 6948392.0
+    },
+    {
+        "name": "Netherlands",
+        "latitude": 52.5,
+        "longitude": 5.75,
+        "population": 17700982.0
+    },
+    {
+        "name": "Norway",
+        "latitude": 62.0,
+        "longitude": 10.0,
+        "population": 5457127.0
+    },
+    {
+        "name": "Nepal",
+        "latitude": 28.0,
+        "longitude": 84.0,
+        "population": 30547580.0
+    },
+    {
+        "name": "Nauru",
+        "latitude": -0.53333333,
+        "longitude": 166.91666666,
+        "population": 12668.0
+    },
+    {
+        "name": "New Zealand",
+        "latitude": -41.0,
+        "longitude": 174.0,
+        "population": 5124100.0
+    },
+    {
+        "name": "Oman",
+        "latitude": 21.0,
+        "longitude": 57.0,
+        "population": 4576298.0
+    },
+    {
+        "name": "Pakistan",
+        "latitude": 30.0,
+        "longitude": 70.0,
+        "population": 235824862.0
+    },
+    {
+        "name": "Panama",
+        "latitude": 9.0,
+        "longitude": -80.0,
+        "population": 4408581.0
+    },
+    {
+        "name": "Peru",
+        "latitude": -10.0,
+        "longitude": -76.0,
+        "population": 34049588.0
+    },
+    {
+        "name": "Philippines",
+        "latitude": 13.0,
+        "longitude": 122.0,
+        "population": 115559009.0
+    },
+    {
+        "name": "Palau",
+        "latitude": 7.5,
+        "longitude": 134.5,
+        "population": 18055.0
+    },
+    {
+        "name": "Papua New Guinea",
+        "latitude": -6.0,
+        "longitude": 147.0,
+        "population": 10142619.0
+    },
+    {
+        "name": "Poland",
+        "latitude": 52.0,
+        "longitude": 20.0,
+        "population": 36821749.0
+    },
+    {
+        "name": "Puerto Rico",
+        "latitude": 18.25,
+        "longitude": -66.5,
+        "population": 3221789.0
+    },
+    {
+        "name": "North Korea",
+        "latitude": 40.0,
+        "longitude": 127.0,
+        "population": 26069416.0
+    },
+    {
+        "name": "Portugal",
+        "latitude": 39.5,
+        "longitude": -8.0,
+        "population": 10409704.0
+    },
+    {
+        "name": "Paraguay",
+        "latitude": -23.0,
+        "longitude": -58.0,
+        "population": 6780744.0
+    },
+    {
+        "name": "Palestinian Territory Occupied",
+        "latitude": 31.9,
+        "longitude": 35.2,
+        "population": 5043612.0
+    },
+    {
+        "name": "French Polynesia",
+        "latitude": -15.0,
+        "longitude": -140.0,
+        "population": 306279.0
+    },
+    {
+        "name": "Qatar",
+        "latitude": 25.5,
+        "longitude": 51.25,
+        "population": 2695122.0
+    },
+    {
+        "name": "Romania",
+        "latitude": 46.0,
+        "longitude": 25.0,
+        "population": 19047009.0
+    },
+    {
+        "name": "Russia",
+        "latitude": 60.0,
+        "longitude": 100.0,
+        "population": 144236933.0
+    },
+    {
+        "name": "Rwanda",
+        "latitude": -2.0,
+        "longitude": 30.0,
+        "population": 13776698.0
+    },
+    {
+        "name": "Saudi Arabia",
+        "latitude": 25.0,
+        "longitude": 45.0,
+        "population": 36408820.0
+    },
+    {
+        "name": "Sudan",
+        "latitude": 15.0,
+        "longitude": 30.0,
+        "population": 46874204.0
+    },
+    {
+        "name": "Senegal",
+        "latitude": 14.0,
+        "longitude": -14.0,
+        "population": 17316449.0
+    },
+    {
+        "name": "Singapore",
+        "latitude": 1.36666666,
+        "longitude": 103.8,
+        "population": 5637022.0
+    },
+    {
+        "name": "Solomon Islands",
+        "latitude": -8.0,
+        "longitude": 159.0,
+        "population": 724273.0
+    },
+    {
+        "name": "Sierra Leone",
+        "latitude": 8.5,
+        "longitude": -11.5,
+        "population": 8605718.0
+    },
+    {
+        "name": "El Salvador",
+        "latitude": 13.83333333,
+        "longitude": -88.91666666,
+        "population": 6336392.0
+    },
+    {
+        "name": "San Marino",
+        "latitude": 43.76666666,
+        "longitude": 12.41666666,
+        "population": 33660.0
+    },
+    {
+        "name": "Somalia",
+        "latitude": 10.0,
+        "longitude": 49.0,
+        "population": 17597511.0
+    },
+    {
+        "name": "Serbia",
+        "latitude": 44.0,
+        "longitude": 21.0,
+        "population": 6664449.0
+    },
+    {
+        "name": "South Sudan",
+        "latitude": 7.0,
+        "longitude": 30.0,
+        "population": 10913164.0
+    },
+    {
+        "name": "Sao Tome and Principe",
+        "latitude": 1.0,
+        "longitude": 7.0,
+        "population": 227380.0
+    },
+    {
+        "name": "Suriname",
+        "latitude": 4.0,
+        "longitude": -56.0,
+        "population": 618040.0
+    },
+    {
+        "name": "Slovakia",
+        "latitude": 48.66666666,
+        "longitude": 19.5,
+        "population": 5431752.0
+    },
+    {
+        "name": "Slovenia",
+        "latitude": 46.11666666,
+        "longitude": 14.81666666,
+        "population": 2111986.0
+    },
+    {
+        "name": "Sweden",
+        "latitude": 62.0,
+        "longitude": 15.0,
+        "population": 10486941.0
+    },
+    {
+        "name": "Eswatini",
+        "latitude": -26.5,
+        "longitude": 31.5,
+        "population": 1201670.0
+    },
+    {
+        "name": "Sint Maarten (Dutch part)",
+        "latitude": 18.033333,
+        "longitude": -63.05,
+        "population": 42848.0
+    },
+    {
+        "name": "Seychelles",
+        "latitude": -4.58333333,
+        "longitude": 55.66666666,
+        "population": 119878.0
+    },
+    {
+        "name": "Syria",
+        "latitude": 35.0,
+        "longitude": 38.0,
+        "population": 22125249.0
+    },
+    {
+        "name": "Turks and Caicos Islands",
+        "latitude": 21.75,
+        "longitude": -71.58333333,
+        "population": 45703.0
+    },
+    {
+        "name": "Chad",
+        "latitude": 15.0,
+        "longitude": 19.0,
+        "population": 17723315.0
+    },
+    {
+        "name": "Togo",
+        "latitude": 8.0,
+        "longitude": 1.16666666,
+        "population": 8848699.0
+    },
+    {
+        "name": "Thailand",
+        "latitude": 15.0,
+        "longitude": 100.0,
+        "population": 71697030.0
+    },
+    {
+        "name": "Tajikistan",
+        "latitude": 39.0,
+        "longitude": 71.0,
+        "population": 9952787.0
+    },
+    {
+        "name": "Turkmenistan",
+        "latitude": 40.0,
+        "longitude": 60.0,
+        "population": 6430770.0
+    },
+    {
+        "name": "Timor-Leste",
+        "latitude": -8.83333333,
+        "longitude": 125.91666666,
+        "population": 1341296.0
+    },
+    {
+        "name": "Tonga",
+        "latitude": -20.0,
+        "longitude": -175.0,
+        "population": 106858.0
+    },
+    {
+        "name": "Trinidad and Tobago",
+        "latitude": 11.0,
+        "longitude": -61.0,
+        "population": 1531044.0
+    },
+    {
+        "name": "Tunisia",
+        "latitude": 34.0,
+        "longitude": 9.0,
+        "population": 12356117.0
+    },
+    {
+        "name": "Turkey",
+        "latitude": 39.0,
+        "longitude": 35.0,
+        "population": 84979913.0
+    },
+    {
+        "name": "Tuvalu",
+        "latitude": -8.0,
+        "longitude": 178.0,
+        "population": 11312.0
+    },
+    {
+        "name": "Tanzania",
+        "latitude": -6.0,
+        "longitude": 35.0,
+        "population": 65497748.0
+    },
+    {
+        "name": "Uganda",
+        "latitude": 1.0,
+        "longitude": 32.0,
+        "population": 47249585.0
+    },
+    {
+        "name": "Ukraine",
+        "latitude": 49.0,
+        "longitude": 32.0,
+        "population": 38000000.0
+    },
+    {
+        "name": "Uruguay",
+        "latitude": -33.0,
+        "longitude": -56.0,
+        "population": 3422794.0
+    },
+    {
+        "name": "United States",
+        "latitude": 38.0,
+        "longitude": -97.0,
+        "population": 333287557.0
+    },
+    {
+        "name": "Uzbekistan",
+        "latitude": 41.0,
+        "longitude": 64.0,
+        "population": 35648100.0
+    },
+    {
+        "name": "Saint Vincent and the Grenadines",
+        "latitude": 13.25,
+        "longitude": -61.2,
+        "population": 103948.0
+    },
+    {
+        "name": "Venezuela",
+        "latitude": 8.0,
+        "longitude": -66.0,
+        "population": 28301696.0
+    },
+    {
+        "name": "Virgin Islands (British)",
+        "latitude": 18.431383,
+        "longitude": -64.62305,
+        "population": 31305.0
+    },
+    {
+        "name": "Virgin Islands (US)",
+        "latitude": 18.34,
+        "longitude": -64.93,
+        "population": 105413.0
+    },
+    {
+        "name": "Vietnam",
+        "latitude": 16.16666666,
+        "longitude": 107.83333333,
+        "population": 98186856.0
+    },
+    {
+        "name": "Vanuatu",
+        "latitude": -16.0,
+        "longitude": 167.0,
+        "population": 326740.0
+    },
+    {
+        "name": "Samoa",
+        "latitude": -13.58333333,
+        "longitude": -172.33333333,
+        "population": 222382.0
+    },
+    {
+        "name": "Kosovo",
+        "latitude": 42.5612909,
+        "longitude": 20.3403035,
+        "population": 1761985.0
+    },
+    {
+        "name": "Yemen",
+        "latitude": 15.0,
+        "longitude": 48.0,
+        "population": 33696614.0
+    },
+    {
+        "name": "South Africa",
+        "latitude": -29.0,
+        "longitude": 24.0,
+        "population": 59893885.0
+    },
+    {
+        "name": "Zambia",
+        "latitude": -15.0,
+        "longitude": 30.0,
+        "population": 20017675.0
+    },
+    {
+        "name": "Zimbabwe",
+        "latitude": -20.0,
+        "longitude": 30.0,
+        "population": 16320537.0
+    }
 ]

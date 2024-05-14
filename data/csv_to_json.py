@@ -25,7 +25,12 @@ for _, row in merged_data.iterrows():
     latitude = float(row['latitude'])
     longitude = float(row['longitude'])
     population = float(row['2022'])  # Make sure population data is converted to float
-    formatted_data.append([row['name'], [latitude, longitude, population]])
+    formatted_data.append({
+        "name": row['name'],
+        "latitude": latitude,
+        "longitude": longitude,
+        "population": population
+    })
 
 # JSON structure in the desired format
 result_json = formatted_data

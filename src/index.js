@@ -10,12 +10,12 @@ var viewer = new Cesium.Viewer('cesiumContainer', {
     baseLayerPicker: false,
     fullscreenButton: true,
     geocoder: false,
-    homeButton: true,  
-    infoBox: false,  
-    sceneModePicker: false,  
-    selectionIndicator: false,  
-    timeline: false,  
-    navigationHelpButton: false, 
+    homeButton: true,
+    infoBox: false,
+    sceneModePicker: false,
+    selectionIndicator: false,
+    timeline: false,
+    navigationHelpButton: false,
     scene3DOnly: true,
 });
 
@@ -24,28 +24,37 @@ Cesium.IonImageryProvider.fromAssetId(3).then(provider => {
     viewer.imageryLayers.addImageryProvider(provider);
 });
 
-// Assume countryPopData is already loaded (You might load this via an Ajax call or directly include it in your project)
-var countryPopData = [
-    { name: "USA", latitude: 38.9072, longitude: -77.0369, population: 327200000 },
-    { name: "China", latitude: 39.9042, longitude: 116.4074, population: 1393000000 },
-    { name: "India", latitude: 28.6139, longitude: 77.2090, population: 1339000000 }
-    // Add more countries as needed
-];
+// Load data from JSON and add it to the globe
+fetch('data/countryPop.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(jsonData => {
+        console.log('JSON data loaded:', jsonData); // Log the loaded JSON data
+        addPillars(jsonData);
+    })
+    .catch(error => console.error('Error loading JSON data:', error));
 
 function addPillars(data) {
     data.forEach(function(country) {
         var height = country.population / 100000; // Scaling factor for visualization
+        var surfacePosition = Cesium.Cartesian3.fromDegrees(country.longitude, country.latitude);
+        var topPosition = Cesium.Cartesian3.fromDegrees(country.longitude, country.latitude, height * 1000);
+
         viewer.entities.add({
             name: country.name,
-            position: Cesium.Cartesian3.fromDegrees(country.longitude, country.latitude),
+            position: new Cesium.CallbackProperty(function() {
+                return Cesium.Cartesian3.midpoint(surfacePosition, topPosition, new Cesium.Cartesian3());
+            }, false),
             cylinder: {
                 length: height * 1000, // Adjust height multiplier as needed
-                topRadius: 200000, // Fixed top radius
-                bottomRadius: 200000, // Fixed bottom radius
-                material: Cesium.Color.RED.withAlpha(0.5)
+                topRadius: 100000, // Fixed top radius
+                bottomRadius: 100000, // Fixed bottom radius
+                material: Cesium.Color.RED.withAlpha(0.5),
             }
         });
     });
 }
-
-addPillars(countryPopData);
