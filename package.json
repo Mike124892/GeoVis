@@ -11,6 +11,7 @@
   "license": "ISC",
   "devDependencies": {
     "cesium": "^1.117.0",
+    "compression-webpack-plugin": "^11.1.0",
     "copy-webpack-plugin": "^12.0.2",
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.1",

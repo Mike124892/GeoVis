@@ -2,6 +2,7 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const cesiumSource = 'node_modules/cesium/Source';
 const cesiumWorkers = '../Build/Cesium/Workers';
@@ -16,7 +17,9 @@ module.exports = {
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
-        sourcePrefix: ''
+        sourcePrefix: '',
+        publicPath: '/',
+        chunkFilename: '[name].[chunkhash].js' // For code splitting
     },
     amd: {
         toUrlUndefined: true
@@ -32,7 +35,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'src/index.html'
+            template: 'src/index.html',
+            filename: 'index.html',
         }),
         new CopyWebpackPlugin({ 
             patterns: [
@@ -44,8 +48,17 @@ module.exports = {
         }),
         new webpack.DefinePlugin({
             CESIUM_BASE_URL: JSON.stringify('')
+        }),
+        new CompressionPlugin({ // Gzip compression plugin
+            algorithm: 'gzip',
+            test: /\.(js|css|html|json|svg|xml)$/
         })
     ],
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        },
+    },
     devServer: {
         static: {
             directory: path.join(__dirname, 'dist'),
