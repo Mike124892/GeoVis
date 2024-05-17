@@ -24,7 +24,7 @@ Cesium.IonImageryProvider.fromAssetId(3).then(provider => {
 });
 
 // Load data from JSON and add it to the globe
-fetch('data/countryPop.json')
+fetch('data/cityPop.json')
     .then(response => response.json())
     .then(jsonData => {
         console.log('JSON data loaded:', jsonData);
@@ -35,21 +35,31 @@ fetch('data/countryPop.json')
 // Disable clustering for troubleshooting
 viewer.entities.clustering.enabled = false;
 
-// Function to add lines based on population
+// Function to add lines based on population with gradient coloring
 function addPopulationLines(data) {
-    data.forEach(function(country) {
-        var height = country.population / 100000; // Scaling factor for visualization
-        var surfacePosition = Cesium.Cartesian3.fromDegrees(country.longitude, country.latitude);
-        var heightPosition = Cesium.Cartesian3.fromDegrees(country.longitude, country.latitude, height * 1000);
+    // Find min and max population
+    var populations = data.map(city => city.population);
+    var minPopulation = Math.min(...populations);
+    var maxPopulation = Math.max(...populations);
 
-        var colorScale = 0.6 - (height / 200); // Adjust color based on population height
-        var lineColor = Cesium.Color.fromHsl(colorScale, 1.0, 0.5);
+    data.forEach(function(city) {
+        var height = city.population / 5000;
+        var surfacePosition = Cesium.Cartesian3.fromDegrees(city.longitude, city.latitude);
+        var heightPosition = Cesium.Cartesian3.fromDegrees(city.longitude, city.latitude, height * 1000);
+
+        // Calculate color based on population
+        var normalizedPopulation = (city.population - minPopulation) / (maxPopulation - minPopulation);
+        var lineColor = Cesium.Color.fromHsl(
+            0.66 - (0.66 * normalizedPopulation), // Hue from blue (0.66) to green (0.33)
+            1.0,
+            0.5 + (0.25 * normalizedPopulation)  // Lightness from dark (0.5) to light (0.75)
+        );
 
         viewer.entities.add({
-            name: country.name,
+            name: city.name,
             polyline: {
                 positions: [surfacePosition, heightPosition],
-                width: 5,
+                width: 2,
                 material: new Cesium.ColorMaterialProperty(lineColor)
             }
         });
