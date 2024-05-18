@@ -1,4 +1,4 @@
-# GeoVis Project
+# GeoVis
 
 ## Description
 GeoVis is a project that visualizes population data on a 3D globe using CesiumJS. It fetches population data from a JSON file and renders visuals on the globe based on population density. These visuals are dynamic based on the level of zoom the users is viewing.
