@@ -11,11 +11,18 @@ npm install
 ```
 
 ## Usage
-1. **Start the Development Server**: Run the following command to start the development server:
+1. **Build the Project**: Before starting the development server or deploying, build the project to generate the latest version of the `dist` folder. Run the following command:
+```
+npm run build
+```
+This step compiles the source code and assets into the `dist` directory, making it ready for deployment or local hosting.
+
+2. **Start the Development Server**: Run the following command to start the development server:
 ```
 npm start
 ```
-2. **View the Application**: Open your web browser and navigate to `http://localhost:8080` to view the application.
+
+3. **View the Application**: Open your web browser and navigate to `http://localhost:8080` to view the application.
 
 ## JSON Data Format
 The application expects population data in JSON format with the following structure (this should be in the [src/data](/src/data) directory):
