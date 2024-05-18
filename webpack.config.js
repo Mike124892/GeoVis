@@ -43,7 +43,8 @@ module.exports = {
                 { from: path.join(cesiumSource, cesiumWorkers), to: 'Workers' },
                 { from: path.join(cesiumSource, 'Assets'), to: 'Assets' },
                 { from: path.join(cesiumSource, 'Widgets'), to: 'Widgets' },
-                { from: 'src/data/cityPop.json', to: 'data/cityPop.json' }
+                { from: 'src/data/cityPop.json', to: 'data/cityPop.json' },
+                { from: 'src/data/counties.geojson', to: 'data/counties.geojson' }
             ]
         }),
         new webpack.DefinePlugin({

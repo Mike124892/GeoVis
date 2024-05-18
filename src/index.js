@@ -42,8 +42,6 @@ function fetchPopulationData() {
 
 fetchPopulationData();
 
-viewer.entities.clustering.enabled = false;
-
 function addPopulationLines(data) {
     var populations = data.map(city => city.population);
     var minPopulation = Math.min(...populations);
