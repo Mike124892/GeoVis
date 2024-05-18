@@ -24,45 +24,6 @@ npm start
 
 3. **View the Application**: Open your web browser and navigate to `http://localhost:8080` to view the application.
 
-## JSON Data Format
-The application expects population data in JSON format with the following structure (this should be in the [src/data](/src/data) directory):
-```
-[
-    {
-        "name": "Country Name",
-        "latitude": <latitude-value>,
-        "longitude": <longitude-value>,
-        "population": <population-value>
-    },
-    ...
-]
-```
-- `name`: The name of the country.
-- `latitude`: The latitude coordinate of the country's location.
-- `longitude`: The longitude coordinate of the country's location.
-- `population`: The population of the country.
-
-Example:
-```
-[
-    {
-        "name": "United States",
-        "latitude": 37.0902,
-        "longitude": -95.7129,
-        "population": 331002651
-    },
-    {
-        "name": "China",
-        "latitude": 35.8617,
-        "longitude": 104.1954,
-        "population": 1439323776
-    },
-    ...
-]
-```
-
-You can refer to the python script and the data files in the [data](/data) directory for aid in merging datasets to fit this need.
-
 ## Additional Notes
 - Ensure that you have a valid Cesium Ion access token set in [index.js](/src/index.js) (if you are experiencing issues, it may be because my provided token is no longer active). You can get your own access token at [Cesium](https://cesium.com/).
 - The application uses CesiumJS for rendering the 3D globe and requires an internet vonnection to connect imagery data.
