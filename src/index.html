@@ -5,8 +5,23 @@
     <title>GeoVis</title>
     <script src="https://cesium.com/downloads/cesiumjs/releases/1.95/Build/Cesium/Cesium.js"></script>
     <link href="https://cesium.com/downloads/cesiumjs/releases/1.95/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <style>
+        #loadingScreen {
+            position: absolute;
+            font-family: sans-serif;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0);
+            color: white;
+            text-align: center;
+            line-height: 100vh;
+            font-size: 2em;
+            z-index: 9999;
+        }
+    </style>
 </head>
 <body>
     <div id="cesiumContainer"></div>
+    <div id="loadingScreen">Loading...</div>
 </body>
 </html>
