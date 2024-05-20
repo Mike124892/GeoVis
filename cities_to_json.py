@@ -4,7 +4,7 @@ import pandas as pd
 import re
 
 # Load the cities data from the worldcities.csv file
-cities_data = pd.read_csv('worldcities.csv')
+cities_data = pd.read_csv('./data/worldcities.csv')
 
 # Filter the necessary columns for latitude, longitude, and the city name
 cities_data = cities_data[['city', 'lat', 'lng', 'population']]
