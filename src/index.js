@@ -2,7 +2,7 @@ var Cesium = require('cesium/Cesium');
 require('./css/main.css');
 require('cesium/Widgets/widgets.css');
 
-Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjNTVlNmQwMy0xOWJjLTQ3ZDEtYjg0Yi03NGVkYjg3YjQ5ZTkiLCJpZCI6MjE0MzU1LCJpYXQiOjE3MTU2NjU2OTd9.I3zQAB7RfrPIq2hAt1IigfveLftPkGaN6xhhKWkhfds';
+Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIwMTQwODE4NS03M2VhLTQ2NDgtOTEwNS1lYjVjMDQ0ZDlkN2QiLCJpZCI6MjE0MzU1LCJpYXQiOjE3MTYyNDYzNDN9.ZDtqZHXxyqetQHThLIPcfZhNPJNlVKoHg0uU4Q-e5TA';
 
 var viewer = new Cesium.Viewer('cesiumContainer', {
     animation: false,
@@ -22,25 +22,28 @@ Cesium.IonImageryProvider.fromAssetId(3).then(provider => {
     viewer.imageryLayers.addImageryProvider(provider);
 });
 
+// Display loading screen
+document.getElementById('loadingScreen').style.display = 'block';
+
 // Load data from JSON and add it to the globe
 function fetchPopulationData() {
-    const cachedData = localStorage.getItem('cityPopData');
-    if (cachedData) {
-        console.log('Using cached data');
-        addPopulationLines(JSON.parse(cachedData));
-    } else {
-        fetch('data/cityPop.json')
-            .then(response => response.json())
-            .then(jsonData => {
-                console.log('JSON data loaded:', jsonData);
-                localStorage.setItem('cityPopData', JSON.stringify(jsonData)); // Cache data
-                addPopulationLines(jsonData);
-            })
-            .catch(error => console.error('Error loading JSON data:', error));
-    }
+    return new Promise((resolve, reject) => {
+        const cachedData = localStorage.getItem('cityPopData');
+        if (cachedData) {
+            console.log('Using cached data');
+            resolve(JSON.parse(cachedData));
+        } else {
+            fetch('data/cityPop.json')
+                .then(response => response.json())
+                .then(jsonData => {
+                    console.log('JSON data loaded:', jsonData);
+                    localStorage.setItem('cityPopData', JSON.stringify(jsonData)); // Cache data
+                    resolve(jsonData);
+                })
+                .catch(error => reject('Error loading JSON data:', error));
+        }
+    });
 }
-
-fetchPopulationData();
 
 function addPopulationLines(data) {
     var populations = data.map(city => city.population);
@@ -68,3 +71,61 @@ function addPopulationLines(data) {
         });
     });
 }
+
+// Load GeoJSON data and add it to the viewer
+var countiesDataSource;
+
+function loadCountiesData() {
+    return Cesium.GeoJsonDataSource.load('data/counties.geojson').then(dataSource => {
+        countiesDataSource = dataSource;
+        viewer.dataSources.add(dataSource);
+
+        // Apply styling to the GeoJSON data
+        var entities = dataSource.entities.values;
+        entities.forEach(entity => {
+            entity.polygon.material = Cesium.Color.YELLOW.withAlpha(0.5);
+            entity.polygon.outline = true;
+            entity.polygon.outlineColor = Cesium.Color.BLACK;
+            entity.polygon.outlineWidth = 2;
+        });
+        return dataSource;
+    }).catch(error => console.error('Error loading GeoJSON data:', error));
+}
+
+// Monitor the zoom level and switch between pillars and overlay
+viewer.camera.changed.addEventListener(function() {
+    var height = viewer.camera.positionCartographic.height;
+    if (height < 10000000) {
+        // Zoomed in: show 2D overlay, hide pillars
+        viewer.entities.suspendEvents();
+        viewer.entities.values.forEach(entity => {
+            entity.show = false;
+        });
+        viewer.entities.resumeEvents();
+        if (countiesDataSource) {
+            countiesDataSource.show = true;
+        }
+    } else {
+        // Zoomed out: show pillars, hide 2D overlay
+        viewer.entities.suspendEvents();
+        viewer.entities.values.forEach(entity => {
+            entity.show = true;
+        });
+        viewer.entities.resumeEvents();
+        if (countiesDataSource) {
+            countiesDataSource.show = false;
+        }
+    }
+});
+
+// Initialize the application
+Promise.all([fetchPopulationData(), loadCountiesData()])
+    .then(([populationData, countiesData]) => {
+        addPopulationLines(populationData);
+        // Hide loading screen
+        document.getElementById('loadingScreen').style.display = 'none';
+    })
+    .catch(error => {
+        console.error(error);
+        document.getElementById('loadingScreen').style.display = 'none';
+    });
