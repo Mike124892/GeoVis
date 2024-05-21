@@ -44,7 +44,8 @@ module.exports = {
                 { from: path.join(cesiumSource, 'Assets'), to: 'Assets' },
                 { from: path.join(cesiumSource, 'Widgets'), to: 'Widgets' },
                 { from: 'src/data/cityPop.json', to: 'data/cityPop.json' },
-                { from: 'src/data/counties.geojson', to: 'data/counties.geojson' }
+                { from: 'src/data/wa_counties.geojson', to: 'data/wa_counties.geojson' },
+                { from: 'src/data/states.json', to: 'data/states.json' },
             ]
         }),
         new webpack.DefinePlugin({
