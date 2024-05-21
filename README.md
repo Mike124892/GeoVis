@@ -28,4 +28,4 @@ npm start
 - Ensure that you have a valid Cesium Ion access token set in [index.js](/src/index.js) (if you are experiencing issues, it may be because my provided token is no longer active). You can get your own access token at [Cesium](https://cesium.com/).
 - The application uses CesiumJS for rendering the 3D globe and requires an internet connection to connect imagery data.
 - Customize the visualization by modifying the code in [index.js](/src/index.js).
-- Once running, you can view the render at http://localhost:{PORT}/. The default port is 8080, but you can also locate your environment within the node terminal that your webpack-dev-server is running.
+- Once running, you can view the render at `http://localhost:{PORT}/`. The default port is 8080, but you can also locate your environment within the node terminal that your webpack-dev-server is running.
