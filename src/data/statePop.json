@@ -1,0 +1,387 @@
+[
+    {
+        "us_state_fips": "78",
+        "us_county_fips": "78000",
+        "population": "104680",
+        "region": "Virgin Islands",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "72",
+        "us_county_fips": "72000",
+        "population": "3386941",
+        "region": "Puerto Rico",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "66",
+        "us_county_fips": "66000",
+        "population": "165768",
+        "region": "Guam",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "69",
+        "us_county_fips": "69000",
+        "population": "56882",
+        "region": "Northern Mariana Islands",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "01",
+        "us_county_fips": "01000",
+        "population": "4864680",
+        "region": "Alabama",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "02",
+        "us_county_fips": "02000",
+        "population": "738516",
+        "region": "Alaska",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "04",
+        "us_county_fips": "04000",
+        "population": "6946685",
+        "region": "Arizona",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "05",
+        "us_county_fips": "05000",
+        "population": "2990671",
+        "region": "Arkansas",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "06",
+        "us_county_fips": "06000",
+        "population": "39148760",
+        "region": "California",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "08",
+        "us_county_fips": "08000",
+        "population": "5531141",
+        "region": "Colorado",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "09",
+        "us_county_fips": "09000",
+        "population": "3581504",
+        "region": "Connecticut",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "10",
+        "us_county_fips": "10000",
+        "population": "949495",
+        "region": "Delaware",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "11",
+        "us_county_fips": "11000",
+        "population": "684498",
+        "region": "District of Columbia",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "12",
+        "us_county_fips": "12000",
+        "population": "20598139",
+        "region": "Florida",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "13",
+        "us_county_fips": "13000",
+        "population": "10297484",
+        "region": "Georgia",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "15",
+        "us_county_fips": "15000",
+        "population": "1422029",
+        "region": "Hawaii",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "16",
+        "us_county_fips": "16000",
+        "population": "1687809",
+        "region": "Idaho",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "17",
+        "us_county_fips": "17000",
+        "population": "12821497",
+        "region": "Illinois",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "18",
+        "us_county_fips": "18000",
+        "population": "6637426",
+        "region": "Indiana",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "19",
+        "us_county_fips": "19000",
+        "population": "3132499",
+        "region": "Iowa",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "20",
+        "us_county_fips": "20000",
+        "population": "2908776",
+        "region": "Kansas",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "21",
+        "us_county_fips": "21000",
+        "population": "4440204",
+        "region": "Kentucky",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "22",
+        "us_county_fips": "22000",
+        "population": "4663616",
+        "region": "Louisiana",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "23",
+        "us_county_fips": "23000",
+        "population": "1332813",
+        "region": "Maine",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "24",
+        "us_county_fips": "24000",
+        "population": "6003435",
+        "region": "Maryland",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "25",
+        "us_county_fips": "25000",
+        "population": "6830193",
+        "region": "Massachusetts",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "26",
+        "us_county_fips": "26000",
+        "population": "9957488",
+        "region": "Michigan",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "27",
+        "us_county_fips": "27000",
+        "population": "5527358",
+        "region": "Minnesota",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "28",
+        "us_county_fips": "28000",
+        "population": "2988762",
+        "region": "Mississippi",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "29",
+        "us_county_fips": "29000",
+        "population": "6090062",
+        "region": "Missouri",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "30",
+        "us_county_fips": "30000",
+        "population": "1041732",
+        "region": "Montana",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "31",
+        "us_county_fips": "31000",
+        "population": "1904760",
+        "region": "Nebraska",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "32",
+        "us_county_fips": "32000",
+        "population": "2922849",
+        "region": "Nevada",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "33",
+        "us_county_fips": "33000",
+        "population": "1343622",
+        "region": "New Hampshire",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "34",
+        "us_county_fips": "34000",
+        "population": "8881845",
+        "region": "New Jersey",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "35",
+        "us_county_fips": "35000",
+        "population": "2092434",
+        "region": "New Mexico",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "36",
+        "us_county_fips": "36000",
+        "population": "19618453",
+        "region": "New York",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "37",
+        "us_county_fips": "37000",
+        "population": "10155624",
+        "region": "North Carolina",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "38",
+        "us_county_fips": "38000",
+        "population": "752201",
+        "region": "North Dakota",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "39",
+        "us_county_fips": "39000",
+        "population": "11641879",
+        "region": "Ohio",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "40",
+        "us_county_fips": "40000",
+        "population": "3918137",
+        "region": "Oklahoma",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "41",
+        "us_county_fips": "41000",
+        "population": "4081943",
+        "region": "Oregon",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "42",
+        "us_county_fips": "42000",
+        "population": "12791181",
+        "region": "Pennsylvania",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "44",
+        "us_county_fips": "44000",
+        "population": "1056611",
+        "region": "Rhode Island",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "45",
+        "us_county_fips": "45000",
+        "population": "4955925",
+        "region": "South Carolina",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "46",
+        "us_county_fips": "46000",
+        "population": "864289",
+        "region": "South Dakota",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "47",
+        "us_county_fips": "47000",
+        "population": "6651089",
+        "region": "Tennessee",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "48",
+        "us_county_fips": "48000",
+        "population": "27885195",
+        "region": "Texas",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "49",
+        "us_county_fips": "49000",
+        "population": "3045350",
+        "region": "Utah",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "50",
+        "us_county_fips": "50000",
+        "population": "624977",
+        "region": "Vermont",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "51",
+        "us_county_fips": "51000",
+        "population": "8413774",
+        "region": "Virginia",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "53",
+        "us_county_fips": "53000",
+        "population": "7294336",
+        "region": "Washington",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "54",
+        "us_county_fips": "54000",
+        "population": "1829054",
+        "region": "West Virginia",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "55",
+        "us_county_fips": "55000",
+        "population": "5778394",
+        "region": "Wisconsin",
+        "subregion": "State Total"
+    },
+    {
+        "us_state_fips": "56",
+        "us_county_fips": "56000",
+        "population": "581836",
+        "region": "Wyoming",
+        "subregion": "State Total"
+    }
+]

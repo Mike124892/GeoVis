@@ -30,7 +30,7 @@ module.exports = {
             use: ['style-loader', 'css-loader']
         }, {
             test: /\.(png|gif|jpg|jpeg|svg|xml|json)$/,
-            use: ['url-loader']
+            use: ['file-loader']
         }]
     },
     plugins: [
@@ -38,20 +38,18 @@ module.exports = {
             template: 'src/index.html',
             filename: 'index.html',
         }),
-        new CopyWebpackPlugin({ 
+        new CopyWebpackPlugin({
             patterns: [
                 { from: path.join(cesiumSource, cesiumWorkers), to: 'Workers' },
                 { from: path.join(cesiumSource, 'Assets'), to: 'Assets' },
                 { from: path.join(cesiumSource, 'Widgets'), to: 'Widgets' },
-                { from: 'src/data/cityPop.json', to: 'data/cityPop.json' },
-                { from: 'src/data/wa_counties.geojson', to: 'data/wa_counties.geojson' },
-                { from: 'src/data/states.json', to: 'data/states.json' },
+                { from: 'src/data', to: 'data' }, // Copy all data files
             ]
         }),
         new webpack.DefinePlugin({
             CESIUM_BASE_URL: JSON.stringify('')
         }),
-        new CompressionPlugin({ // Gzip compression plugin
+        new CompressionPlugin({
             algorithm: 'gzip',
             test: /\.(js|css|html|json|svg|xml)$/
         })
@@ -72,3 +70,4 @@ module.exports = {
         }
     },
 };
+

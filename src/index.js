@@ -93,6 +93,34 @@ function hideAllEntities() {
     if (waDataSource) waDataSource.show = false;
 }
 
+// Function to create a heatmap overlay
+function createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonData) {
+    geoJsonData.features.forEach(feature => {
+        var properties = feature.properties;
+        var populationEntry = data.find(entry => entry.region === properties.name || entry.subregion === properties.NAME);
+        
+        if (populationEntry) {
+            var population = parseInt(populationEntry.population);
+            var normalizedPopulation = (population - minPopulation) / (maxPopulation - minPopulation);
+            var color = Cesium.Color.fromHsl(
+                0.66 - (0.66 * normalizedPopulation), // Hue
+                1.0,
+                0.5 + (0.25 * normalizedPopulation)  // Lightness
+            );
+
+            viewer.entities.add({
+                name: properties.name || properties.NAME,
+                polygon: {
+                    hierarchy: Cesium.Cartesian3.fromDegreesArray(
+                        feature.geometry.coordinates.flat(2)
+                    ),
+                    material: color.withAlpha(0.6)
+                }
+            });
+        }
+    });
+}
+
 // Button event listeners
 document.getElementById('globalPopulationBtn').addEventListener('click', function() {
     hideAllEntities();
@@ -113,9 +141,19 @@ document.getElementById('globalPopulationBtn').addEventListener('click', functio
 
 document.getElementById('usaPopulationBtn').addEventListener('click', function() {
     hideAllEntities();
-    if (countiesDataSource) {
-        countiesDataSource.show = true;
-    }
+    fetch('data/statePop.json')
+        .then(response => response.json())
+        .then(data => {
+            const minPopulation = Math.min(...data.map(item => parseInt(item.population)));
+            const maxPopulation = Math.max(...data.map(item => parseInt(item.population)));
+            fetch('data/states.json')
+                .then(response => response.json())
+                .then(geoJsonData => {
+                    createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonData);
+                })
+                .catch(error => console.error('Error loading states GeoJSON data:', error));
+        })
+        .catch(error => console.error('Error loading state population data:', error));
     viewer.camera.flyTo({
         destination: Cesium.Cartesian3.fromDegrees(-99.1332, 38.9637, 5000000), // Zoom to contiguous USA
         orientation: {
@@ -128,9 +166,19 @@ document.getElementById('usaPopulationBtn').addEventListener('click', function()
 
 document.getElementById('waPopulationBtn').addEventListener('click', function() {
     hideAllEntities();
-    if (waDataSource) {
-        waDataSource.show = true;
-    }
+    fetch('data/wa_countiesPop.json')
+        .then(response => response.json())
+        .then(data => {
+            const minPopulation = Math.min(...data.map(item => parseInt(item.population)));
+            const maxPopulation = Math.max(...data.map(item => parseInt(item.population)));
+            fetch('data/wa_counties.geojson')
+                .then(response => response.json())
+                .then(geoJsonData => {
+                    createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonData);
+                })
+                .catch(error => console.error('Error loading WA counties GeoJSON data:', error));
+        })
+        .catch(error => console.error('Error loading WA county population data:', error));
     viewer.camera.flyTo({
         destination: Cesium.Cartesian3.fromDegrees(-120.7401, 47.7511, 1000000), // Zoom to Washington state
         orientation: {
