@@ -73,59 +73,86 @@ function addPopulationLines(data) {
 }
 
 // Load GeoJSON data and add it to the viewer
-var countiesDataSource;
+var countiesDataSource, waDataSource;
 
-function loadCountiesData() {
-    return Cesium.GeoJsonDataSource.load('data/counties.geojson').then(dataSource => {
-        countiesDataSource = dataSource;
+function loadGeoJsonData(url) {
+    return Cesium.GeoJsonDataSource.load(url).then(dataSource => {
+        dataSource.show = false;  // Hide data source initially
         viewer.dataSources.add(dataSource);
-
-        // Apply styling to the GeoJSON data
-        var entities = dataSource.entities.values;
-        entities.forEach(entity => {
-            entity.polygon.material = Cesium.Color.YELLOW.withAlpha(0.5);
-            entity.polygon.outline = true;
-            entity.polygon.outlineColor = Cesium.Color.BLACK;
-            entity.polygon.outlineWidth = 2;
-        });
         return dataSource;
     }).catch(error => console.error('Error loading GeoJSON data:', error));
 }
 
-// Monitor the zoom level and switch between pillars and overlay
-viewer.camera.changed.addEventListener(function() {
-    var height = viewer.camera.positionCartographic.height;
-    if (height < 10000000) {
-        // Zoomed in: show 2D overlay, hide pillars
-        viewer.entities.suspendEvents();
-        viewer.entities.values.forEach(entity => {
-            entity.show = false;
-        });
-        viewer.entities.resumeEvents();
-        if (countiesDataSource) {
-            countiesDataSource.show = true;
+function hideAllEntities() {
+    viewer.entities.suspendEvents();
+    viewer.entities.values.forEach(entity => {
+        entity.show = false;
+    });
+    viewer.entities.resumeEvents();
+    if (countiesDataSource) countiesDataSource.show = false;
+    if (waDataSource) waDataSource.show = false;
+}
+
+// Button event listeners
+document.getElementById('globalPopulationBtn').addEventListener('click', function() {
+    hideAllEntities();
+    viewer.entities.suspendEvents();
+    viewer.entities.values.forEach(entity => {
+        entity.show = true;
+    });
+    viewer.entities.resumeEvents();
+    viewer.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(0, 0, 30000000), // Zoom out to global view
+        orientation: {
+            heading: Cesium.Math.toRadians(0.0),
+            pitch: Cesium.Math.toRadians(-90.0), // Bird's eye view
+            roll: 0.0
         }
-    } else {
-        // Zoomed out: show pillars, hide 2D overlay
-        viewer.entities.suspendEvents();
-        viewer.entities.values.forEach(entity => {
-            entity.show = true;
-        });
-        viewer.entities.resumeEvents();
-        if (countiesDataSource) {
-            countiesDataSource.show = false;
-        }
+    });
+});
+
+document.getElementById('usaPopulationBtn').addEventListener('click', function() {
+    hideAllEntities();
+    if (countiesDataSource) {
+        countiesDataSource.show = true;
     }
+    viewer.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(-99.1332, 38.9637, 5000000), // Zoom to contiguous USA
+        orientation: {
+            heading: Cesium.Math.toRadians(0.0),
+            pitch: Cesium.Math.toRadians(-90.0), // Bird's eye view
+            roll: 0.0
+        }
+    });
+});
+
+document.getElementById('waPopulationBtn').addEventListener('click', function() {
+    hideAllEntities();
+    if (waDataSource) {
+        waDataSource.show = true;
+    }
+    viewer.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(-120.7401, 47.7511, 1000000), // Zoom to Washington state
+        orientation: {
+            heading: Cesium.Math.toRadians(0.0),
+            pitch: Cesium.Math.toRadians(-90.0), // Bird's eye view
+            roll: 0.0
+        }
+    });
 });
 
 // Initialize the application
-Promise.all([fetchPopulationData(), loadCountiesData()])
-    .then(([populationData, countiesData]) => {
-        addPopulationLines(populationData);
-        // Hide loading screen
-        document.getElementById('loadingScreen').style.display = 'none';
-    })
-    .catch(error => {
-        console.error(error);
-        document.getElementById('loadingScreen').style.display = 'none';
-    });
+Promise.all([
+    fetchPopulationData(),
+    loadGeoJsonData('data/states.json').then(dataSource => { countiesDataSource = dataSource; }),
+    loadGeoJsonData('data/wa_counties.geojson').then(dataSource => { waDataSource = dataSource; })
+])
+.then(([populationData]) => {
+    addPopulationLines(populationData);
+    // Hide loading screen
+    document.getElementById('loadingScreen').style.display = 'none';
+})
+.catch(error => {
+    console.error(error);
+    document.getElementById('loadingScreen').style.display = 'none';
+});

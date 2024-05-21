@@ -5,3 +5,25 @@ html, body, #cesiumContainer {
     padding: 0;
     overflow: hidden;
 }
+
+#buttonsContainer {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 10;
+}
+
+#buttonsContainer button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 25px;
+    background-color: rgba(255, 255, 255, 0.8); /* White background with 80% opacity */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    opacity: 0.8; /* 80% opacity */
+    transition: opacity 0.3s; /* Smooth transition */
+}
+
+#buttonsContainer button:hover {
+    opacity: 1; /* Fully opaque on hover */
+}

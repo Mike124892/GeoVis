@@ -2,26 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>GeoVis</title>
-    <script src="https://cesium.com/downloads/cesiumjs/releases/1.95/Build/Cesium/Cesium.js"></script>
-    <link href="https://cesium.com/downloads/cesiumjs/releases/1.95/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
-    <style>
-        #loadingScreen {
-            position: absolute;
-            font-family: sans-serif;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0);
-            color: white;
-            text-align: center;
-            line-height: 100vh;
-            font-size: 2em;
-            z-index: 9999;
-        }
-    </style>
+    <title>Cesium Viewer</title>
+    <link href="cesium/Widgets/widgets.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
 </head>
 <body>
-    <div id="cesiumContainer"></div>
-    <div id="loadingScreen">Loading...</div>
+    <div id="cesiumContainer" class="fullSize"></div>
+    <div id="loadingScreen" class="loading">Loading...</div>
+    <div id="buttonsContainer">
+        <button id="globalPopulationBtn">Global Population</button>
+        <button id="usaPopulationBtn">USA Population</button>
+        <button id="waPopulationBtn">Washington State Population</button>
+    </div>
+    <script src="Cesium.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
