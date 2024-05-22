@@ -12,17 +12,17 @@ module.exports = {
     context: __dirname,
     mode: isProduction ? 'production' : 'development',
     entry: {
-        app: './src/index.js'
+        main: './src/index.js',
     },
     output: {
-        filename: '[name].js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
         sourcePrefix: '',
         publicPath: '/',
-        chunkFilename: '[name].[chunkhash].js' // For code splitting
+        clean: true,
     },
     amd: {
-        toUrlUndefined: true
+        toUrlUndefined: true,
     },
     module: {
         rules: [{
@@ -57,7 +57,19 @@ module.exports = {
     optimization: {
         splitChunks: {
             chunks: 'all',
+            maxInitialRequests: Infinity,
+            minSize: 0,
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name(module) {
+                        const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+                        return `npm.${packageName.replace('@', '')}`;
+                    },
+                },
+            },
         },
+        runtimeChunk: 'single',
     },
     devServer: {
         static: {
@@ -66,8 +78,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            cesium: path.resolve(__dirname, cesiumSource)
-        }
+            cesium: path.resolve(__dirname, cesiumSource),
+        },
     },
 };
-

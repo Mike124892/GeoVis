@@ -25,24 +25,18 @@ Cesium.IonImageryProvider.fromAssetId(3).then(provider => {
 // Display loading screen
 document.getElementById('loadingScreen').style.display = 'block';
 
-// Load data from JSON and add it to the globe
-function fetchPopulationData() {
-    return new Promise((resolve, reject) => {
-        const cachedData = localStorage.getItem('cityPopData');
-        if (cachedData) {
-            console.log('Using cached data');
-            resolve(JSON.parse(cachedData));
-        } else {
-            fetch('data/cityPop.json')
-                .then(response => response.json())
-                .then(jsonData => {
-                    console.log('JSON data loaded:', jsonData);
-                    localStorage.setItem('cityPopData', JSON.stringify(jsonData)); // Cache data
-                    resolve(jsonData);
-                })
-                .catch(error => reject('Error loading JSON data:', error));
-        }
-    });
+async function fetchPopulationData() {
+    const cachedData = localStorage.getItem('cityPopData');
+    if (cachedData) {
+        console.log('Using cached data');
+        return JSON.parse(cachedData);
+    } else {
+        const response = await fetch('data/cityPop.json');
+        const jsonData = await response.json();
+        console.log('JSON data loaded:', jsonData);
+        localStorage.setItem('cityPopData', JSON.stringify(jsonData)); // Cache data
+        return jsonData;
+    }
 }
 
 function addPopulationLines(data) {
@@ -61,7 +55,7 @@ function addPopulationLines(data) {
             0.5 + (0.25 * normalizedPopulation)  // Lightness
         );
 
-        viewer.entities.add({
+        var entity = viewer.entities.add({
             name: city.name,
             polyline: {
                 positions: [surfacePosition, heightPosition],
@@ -69,21 +63,27 @@ function addPopulationLines(data) {
                 material: new Cesium.ColorMaterialProperty(lineColor)
             }
         });
+        cachedEntities.global.push(entity);
     });
 }
 
 // Load GeoJSON data and add it to the viewer
-var countiesDataSource, waDataSource;
-
-function loadGeoJsonData(url) {
-    return Cesium.GeoJsonDataSource.load(url).then(dataSource => {
-        dataSource.show = false;  // Hide data source initially
-        viewer.dataSources.add(dataSource);
-        return dataSource;
-    }).catch(error => console.error('Error loading GeoJSON data:', error));
+async function loadGeoJsonData(url) {
+    const dataSource = await Cesium.GeoJsonDataSource.load(url);
+    dataSource.show = false;  // Hide data source initially
+    viewer.dataSources.add(dataSource);
+    return dataSource;
 }
 
+let countiesDataSource, waDataSource;
+let cachedEntities = {
+    global: [],
+    usa: [],
+    wa: []
+};
+
 function hideAllEntities() {
+    console.time('hideAllEntities');
     viewer.entities.suspendEvents();
     viewer.entities.values.forEach(entity => {
         entity.show = false;
@@ -91,10 +91,11 @@ function hideAllEntities() {
     viewer.entities.resumeEvents();
     if (countiesDataSource) countiesDataSource.show = false;
     if (waDataSource) waDataSource.show = false;
+    console.timeEnd('hideAllEntities');
 }
 
 // Function to create a heatmap overlay
-function createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonData) {
+async function createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonData, viewKey) {
     geoJsonData.features.forEach(feature => {
         var properties = feature.properties;
         var populationEntry = data.find(entry => entry.region === properties.name || entry.subregion === properties.NAME);
@@ -108,99 +109,133 @@ function createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonData) {
                 0.5 + (0.25 * normalizedPopulation)  // Lightness
             );
 
-            viewer.entities.add({
-                name: properties.name || properties.NAME,
-                polygon: {
-                    hierarchy: Cesium.Cartesian3.fromDegreesArray(
-                        feature.geometry.coordinates.flat(2)
-                    ),
-                    material: color.withAlpha(0.6)
-                }
-            });
+            var entityId = `heatmap-${properties.name || properties.NAME}`;
+            var existingEntity = viewer.entities.getById(entityId);
+            if (!existingEntity) {
+                var entity = viewer.entities.add({
+                    id: entityId,
+                    name: properties.name || properties.NAME,
+                    polygon: {
+                        hierarchy: Cesium.Cartesian3.fromDegreesArray(
+                            feature.geometry.coordinates.flat(2)
+                        ),
+                        material: color.withAlpha(0.6)
+                    }
+                });
+                cachedEntities[viewKey].push(entity);
+            } else {
+                existingEntity.polygon.material = color.withAlpha(0.6);
+                existingEntity.show = true;
+                cachedEntities[viewKey].push(existingEntity);
+            }
         }
     });
 }
 
 // Button event listeners
-document.getElementById('globalPopulationBtn').addEventListener('click', function() {
-    hideAllEntities();
-    viewer.entities.suspendEvents();
-    viewer.entities.values.forEach(entity => {
-        entity.show = true;
-    });
-    viewer.entities.resumeEvents();
-    viewer.camera.flyTo({
-        destination: Cesium.Cartesian3.fromDegrees(0, 0, 30000000), // Zoom out to global view
-        orientation: {
-            heading: Cesium.Math.toRadians(0.0),
-            pitch: Cesium.Math.toRadians(-90.0), // Bird's eye view
-            roll: 0.0
-        }
-    });
-});
-
-document.getElementById('usaPopulationBtn').addEventListener('click', function() {
-    hideAllEntities();
-    fetch('data/statePop.json')
-        .then(response => response.json())
-        .then(data => {
-            const minPopulation = Math.min(...data.map(item => parseInt(item.population)));
-            const maxPopulation = Math.max(...data.map(item => parseInt(item.population)));
-            fetch('data/states.json')
-                .then(response => response.json())
-                .then(geoJsonData => {
-                    createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonData);
-                })
-                .catch(error => console.error('Error loading states GeoJSON data:', error));
-        })
-        .catch(error => console.error('Error loading state population data:', error));
-    viewer.camera.flyTo({
-        destination: Cesium.Cartesian3.fromDegrees(-99.1332, 38.9637, 5000000), // Zoom to contiguous USA
-        orientation: {
-            heading: Cesium.Math.toRadians(0.0),
-            pitch: Cesium.Math.toRadians(-90.0), // Bird's eye view
-            roll: 0.0
-        }
-    });
-});
-
-document.getElementById('waPopulationBtn').addEventListener('click', function() {
-    hideAllEntities();
-    fetch('data/wa_countiesPop.json')
-        .then(response => response.json())
-        .then(data => {
-            const minPopulation = Math.min(...data.map(item => parseInt(item.population)));
-            const maxPopulation = Math.max(...data.map(item => parseInt(item.population)));
-            fetch('data/wa_counties.geojson')
-                .then(response => response.json())
-                .then(geoJsonData => {
-                    createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonData);
-                })
-                .catch(error => console.error('Error loading WA counties GeoJSON data:', error));
-        })
-        .catch(error => console.error('Error loading WA county population data:', error));
-    viewer.camera.flyTo({
-        destination: Cesium.Cartesian3.fromDegrees(-120.7401, 47.7511, 1000000), // Zoom to Washington state
-        orientation: {
-            heading: Cesium.Math.toRadians(0.0),
-            pitch: Cesium.Math.toRadians(-90.0), // Bird's eye view
-            roll: 0.0
-        }
-    });
-});
+document.getElementById('globalPopulationBtn').addEventListener('click', () => switchView('global'));
+document.getElementById('usaPopulationBtn').addEventListener('click', () => switchView('usa'));
+document.getElementById('waPopulationBtn').addEventListener('click', () => switchView('wa'));
 
 // Initialize the application
-Promise.all([
-    fetchPopulationData(),
-    loadGeoJsonData('data/states.json').then(dataSource => { countiesDataSource = dataSource; }),
-    loadGeoJsonData('data/wa_counties.geojson').then(dataSource => { waDataSource = dataSource; })
-])
-.then(([populationData]) => {
-    addPopulationLines(populationData);
+async function preloadData() {
+    console.time('preloadData');
+    const populationData = await fetchPopulationData();
+    const stateData = await fetch('data/statePop.json').then(response => response.json());
+    const waData = await fetch('data/wa_countiesPop.json').then(response => response.json());
+    const stateGeoJson = await fetch('data/states.json').then(response => response.json());
+    const waGeoJson = await fetch('data/wa_counties.geojson').then(response => response.json());
+
+    localStorage.setItem('stateData', JSON.stringify(stateData));
+    localStorage.setItem('waData', JSON.stringify(waData));
+    localStorage.setItem('stateGeoJson', JSON.stringify(stateGeoJson));
+    localStorage.setItem('waGeoJson', JSON.stringify(waGeoJson));
+
+    console.timeEnd('preloadData');
+
+    return {
+        populationData,
+        stateData,
+        waData,
+        stateGeoJson,
+        waGeoJson
+    };
+}
+
+function switchView(type) {
+    console.time('switchView');
+
+    function hideGlobalEntities() {
+        cachedEntities.global.forEach(entity => entity.show = false);
+    }
+
+    switch(type) {
+        case 'global':
+            hideAllEntities();
+            viewer.entities.suspendEvents();
+            cachedEntities.global.forEach(entity => entity.show = true);
+            viewer.entities.resumeEvents();
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(0, 0, 30000000),
+                duration: 1, // Reduce duration to improve performance
+                orientation: {
+                    heading: Cesium.Math.toRadians(0.0),
+                    pitch: Cesium.Math.toRadians(-90.0),
+                    roll: 0.0
+                }
+            });
+            break;
+        case 'usa':
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(-99.1332, 38.9637, 5000000),
+                duration: 1, // Reduce duration to improve performance
+                complete: () => {
+                    hideAllEntities();
+                    viewer.entities.suspendEvents();
+                    cachedEntities.usa.forEach(entity => entity.show = true);
+                    viewer.entities.resumeEvents();
+                },
+                orientation: {
+                    heading: Cesium.Math.toRadians(0.0),
+                    pitch: Cesium.Math.toRadians(-90.0),
+                    roll: 0.0
+                }
+            });
+            break;
+        case 'wa':
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(-120.7401, 47.7511, 1000000),
+                duration: 1, // Reduce duration to improve performance
+                complete: () => {
+                    hideAllEntities();
+                    viewer.entities.suspendEvents();
+                    cachedEntities.wa.forEach(entity => entity.show = true);
+                    viewer.entities.resumeEvents();
+                },
+                orientation: {
+                    heading: Cesium.Math.toRadians(0.0),
+                    pitch: Cesium.Math.toRadians(-90.0),
+                    roll: 0.0
+                }
+            });
+            break;
+    }
+    console.timeEnd('switchView');
+}
+
+preloadData().then(data => {
+    addPopulationLines(data.populationData);
+    loadGeoJsonData('data/states.json').then(dataSource => { 
+        countiesDataSource = dataSource; 
+        createHeatmapOverlay(data.stateData, Math.min(...data.stateData.map(item => item.population)), Math.max(...data.stateData.map(item => item.population)), data.stateGeoJson, 'usa');
+    });
+    loadGeoJsonData('data/wa_counties.geojson').then(dataSource => { 
+        waDataSource = dataSource; 
+        createHeatmapOverlay(data.waData, Math.min(...data.waData.map(item => item.population)), Math.max(...data.waData.map(item => item.population)), data.waGeoJson, 'wa');
+    });
     // Hide loading screen
     document.getElementById('loadingScreen').style.display = 'none';
-})
-.catch(error => {
+}).catch(error => {
     console.error(error);
     document.getElementById('loadingScreen').style.display = 'none';
 });
