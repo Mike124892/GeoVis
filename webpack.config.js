@@ -29,8 +29,11 @@ module.exports = {
             test: /\.css$/,
             use: ['style-loader', 'css-loader']
         }, {
-            test: /\.(png|gif|jpg|jpeg|svg|xml|json)$/,
+            test: /\.(png|gif|jpg|jpeg|svg|xml)$/,
             use: ['file-loader']
+        }, {
+            test: /\.json$/,
+            type: 'json' // Use the built-in JSON loader
         }]
     },
     plugins: [
@@ -50,10 +53,18 @@ module.exports = {
             CESIUM_BASE_URL: JSON.stringify('')
         }),
         new CompressionPlugin({
+            filename: '[path][base].gz',
             algorithm: 'gzip',
-            test: /\.(js|css|html|json|svg|xml)$/
+            test: /\.(js|css|html|json|svg|xml)$/,
+            threshold: 10240,
+            minRatio: 0.8,
         })
     ],
+    performance: {
+        hints: 'warning',
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000,
+    },
     optimization: {
         splitChunks: {
             chunks: 'all',

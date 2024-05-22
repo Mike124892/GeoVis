@@ -31,8 +31,8 @@ async function fetchPopulationData() {
         console.log('Using cached data');
         return JSON.parse(cachedData);
     } else {
-        const response = await fetch('data/cityPop.json');
-        const jsonData = await response.json();
+        const response = await import(/* webpackChunkName: "cityPop" */ './data/cityPop.json');
+        const jsonData = response.default;
         console.log('JSON data loaded:', jsonData);
         localStorage.setItem('cityPopData', JSON.stringify(jsonData)); // Cache data
         return jsonData;
@@ -40,6 +40,7 @@ async function fetchPopulationData() {
 }
 
 function addPopulationLines(data) {
+    console.time('addPopulationLines');
     var populations = data.map(city => city.population);
     var minPopulation = Math.min(...populations);
     var maxPopulation = Math.max(...populations);
@@ -65,13 +66,16 @@ function addPopulationLines(data) {
         });
         cachedEntities.global.push(entity);
     });
+    console.timeEnd('addPopulationLines');
 }
 
 // Load GeoJSON data and add it to the viewer
 async function loadGeoJsonData(url) {
+    console.time(`loadGeoJsonData: ${url}`);
     const dataSource = await Cesium.GeoJsonDataSource.load(url);
     dataSource.show = false;  // Hide data source initially
     viewer.dataSources.add(dataSource);
+    console.timeEnd(`loadGeoJsonData: ${url}`);
     return dataSource;
 }
 
@@ -96,6 +100,7 @@ function hideAllEntities() {
 
 // Function to create a heatmap overlay
 async function createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonData, viewKey) {
+    console.time(`createHeatmapOverlay: ${viewKey}`);
     geoJsonData.features.forEach(feature => {
         var properties = feature.properties;
         var populationEntry = data.find(entry => entry.region === properties.name || entry.subregion === properties.NAME);
@@ -112,17 +117,26 @@ async function createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonD
             var entityId = `heatmap-${properties.name || properties.NAME}`;
             var existingEntity = viewer.entities.getById(entityId);
             if (!existingEntity) {
-                var entity = viewer.entities.add({
-                    id: entityId,
-                    name: properties.name || properties.NAME,
-                    polygon: {
-                        hierarchy: Cesium.Cartesian3.fromDegreesArray(
-                            feature.geometry.coordinates.flat(2)
-                        ),
-                        material: color.withAlpha(0.6)
-                    }
-                });
-                cachedEntities[viewKey].push(entity);
+                try {
+                    var coordinates = feature.geometry.coordinates.flat(2);
+                    coordinates.forEach((coord, index) => {
+                        if (typeof coord !== 'number') {
+                            console.error(`Invalid coordinate at index ${index}:`, coord);
+                        }
+                    });
+
+                    var entity = viewer.entities.add({
+                        id: entityId,
+                        name: properties.name || properties.NAME,
+                        polygon: {
+                            hierarchy: Cesium.Cartesian3.fromDegreesArray(coordinates),
+                            material: color.withAlpha(0.6)
+                        }
+                    });
+                    cachedEntities[viewKey].push(entity);
+                } catch (error) {
+                    console.error('Error creating entity:', error);
+                }
             } else {
                 existingEntity.polygon.material = color.withAlpha(0.6);
                 existingEntity.show = true;
@@ -130,6 +144,7 @@ async function createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonD
             }
         }
     });
+    console.timeEnd(`createHeatmapOverlay: ${viewKey}`);
 }
 
 // Button event listeners
@@ -169,9 +184,10 @@ function switchView(type) {
         cachedEntities.global.forEach(entity => entity.show = false);
     }
 
+    hideAllEntities(); // Hide all entities before showing the relevant ones
+
     switch(type) {
         case 'global':
-            hideAllEntities();
             viewer.entities.suspendEvents();
             cachedEntities.global.forEach(entity => entity.show = true);
             viewer.entities.resumeEvents();
@@ -190,7 +206,6 @@ function switchView(type) {
                 destination: Cesium.Cartesian3.fromDegrees(-99.1332, 38.9637, 5000000),
                 duration: 1, // Reduce duration to improve performance
                 complete: () => {
-                    hideAllEntities();
                     viewer.entities.suspendEvents();
                     cachedEntities.usa.forEach(entity => entity.show = true);
                     viewer.entities.resumeEvents();
@@ -207,7 +222,6 @@ function switchView(type) {
                 destination: Cesium.Cartesian3.fromDegrees(-120.7401, 47.7511, 1000000),
                 duration: 1, // Reduce duration to improve performance
                 complete: () => {
-                    hideAllEntities();
                     viewer.entities.suspendEvents();
                     cachedEntities.wa.forEach(entity => entity.show = true);
                     viewer.entities.resumeEvents();
