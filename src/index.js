@@ -79,7 +79,7 @@ async function loadGeoJsonData(url) {
     return dataSource;
 }
 
-let countiesDataSource, waDataSource;
+let statesDataSource, waDataSource;
 let cachedEntities = {
     global: [],
     usa: [],
@@ -93,70 +93,54 @@ function hideAllEntities() {
         entity.show = false;
     });
     viewer.entities.resumeEvents();
-    if (countiesDataSource) countiesDataSource.show = false;
+    if (statesDataSource) statesDataSource.show = false;
     if (waDataSource) waDataSource.show = false;
     console.timeEnd('hideAllEntities');
-}
-
-function flattenCoordinates(coordinates) {
-    const flatCoords = [];
-    coordinates.forEach(coord => {
-        if (typeof coord[0] === 'number') {
-            flatCoords.push(...coord);
-        } else {
-            flatCoords.push(...flattenCoordinates(coord));
-        }
-    });
-    return flatCoords;
 }
 
 async function createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonData, viewKey) {
     console.time(`createHeatmapOverlay: ${viewKey}`);
     geoJsonData.features.forEach(feature => {
         var properties = feature.properties;
-        var populationEntry = data.find(entry => entry.name === properties.name);
+        var population = properties.population;
+        var normalizedPopulation = (population - minPopulation) / (maxPopulation - minPopulation);
+        var color = Cesium.Color.fromHsl(
+            0.66 - (0.66 * normalizedPopulation), // Hue
+            1.0,
+            0.5 + (0.25 * normalizedPopulation)  // Lightness
+        );
 
-        if (populationEntry) {
-            var population = parseInt(properties.population);
-            var normalizedPopulation = (population - minPopulation) / (maxPopulation - minPopulation);
-            var color = Cesium.Color.fromHsl(
-                0.66 - (0.66 * normalizedPopulation), // Hue
-                1.0,
-                0.5 + (0.25 * normalizedPopulation)  // Lightness
-            );
-
-            var entityId = `heatmap-${properties.name}`;
-            var existingEntity = viewer.entities.getById(entityId);
-            if (!existingEntity) {
-                try {
-                    var coordinates = feature.geometry.coordinates;
-                    if (feature.geometry.type === 'Polygon') {
-                        coordinates = coordinates.flat(2);
-                    } else if (feature.geometry.type === 'MultiPolygon') {
-                        coordinates = coordinates.flat(3);
-                    }
-
-                    if (coordinates.some(coord => typeof coord !== 'number')) {
-                        throw new Error('Invalid coordinates');
-                    }
-
-                    var entity = viewer.entities.add({
-                        id: entityId,
-                        name: properties.name,
-                        polygon: {
-                            hierarchy: Cesium.Cartesian3.fromDegreesArray(coordinates),
-                            material: color.withAlpha(0.6)
-                        }
-                    });
-                    cachedEntities[viewKey].push(entity);
-                } catch (error) {
-                    console.error('Error creating entity:', error);
+        var entityId = `heatmap-${properties.NAME || properties.name}`;
+        var existingEntity = viewer.entities.getById(entityId);
+        if (!existingEntity) {
+            try {
+                var coordinates = feature.geometry.coordinates;
+                if (feature.geometry.type === 'Polygon') {
+                    coordinates = coordinates.flat(2);
+                } else if (feature.geometry.type === 'MultiPolygon') {
+                    coordinates = coordinates.flat(3);
                 }
-            } else {
-                existingEntity.polygon.material = color.withAlpha(0.6);
-                existingEntity.show = true;
-                cachedEntities[viewKey].push(existingEntity);
+
+                if (coordinates.some(coord => typeof coord !== 'number')) {
+                    throw new Error('Invalid coordinates');
+                }
+
+                var entity = viewer.entities.add({
+                    id: entityId,
+                    name: properties.NAME || properties.name,
+                    polygon: {
+                        hierarchy: Cesium.Cartesian3.fromDegreesArray(coordinates),
+                        material: color.withAlpha(0.6)
+                    }
+                });
+                cachedEntities[viewKey].push(entity);
+            } catch (error) {
+                console.error('Error creating entity:', error);
             }
+        } else {
+            existingEntity.polygon.material = color.withAlpha(0.6);
+            existingEntity.show = true;
+            cachedEntities[viewKey].push(existingEntity);
         }
     });
     console.timeEnd(`createHeatmapOverlay: ${viewKey}`);
@@ -172,7 +156,6 @@ async function preloadData() {
     console.time('preloadData');
     const populationData = await fetchPopulationData();
     const stateGeoJson = await fetch('data/states.geojson').then(response => response.json());
-    const waData = await fetch('data/wa_countiesPop.json').then(response => response.json());
     const waGeoJson = await fetch('data/wa_counties.geojson').then(response => response.json());
 
     const stateData = stateGeoJson.features.map(feature => ({
@@ -181,7 +164,6 @@ async function preloadData() {
     }));
     localStorage.setItem('stateData', JSON.stringify(stateData));
     localStorage.setItem('stateGeoJson', JSON.stringify(stateGeoJson));
-    localStorage.setItem('waData', JSON.stringify(waData));
     localStorage.setItem('waGeoJson', JSON.stringify(waGeoJson));
 
     console.timeEnd('preloadData');
@@ -190,7 +172,6 @@ async function preloadData() {
         populationData,
         stateData,
         stateGeoJson,
-        waData,
         waGeoJson
     };
 }
@@ -223,7 +204,12 @@ function switchView(type) {
             viewer.camera.flyTo({
                 destination: Cesium.Cartesian3.fromDegrees(-99.1332, 38.9637, 5000000),
                 duration: 1, // Reduce duration to improve performance
-                complete: () => {
+                complete: async () => {
+                    const stateGeoJson = JSON.parse(localStorage.getItem('stateGeoJson'));
+                    const stateData = JSON.parse(localStorage.getItem('stateData'));
+                    const minPopulation = Math.min(...stateData.map(item => item.population));
+                    const maxPopulation = Math.max(...stateData.map(item => item.population));
+                    await createHeatmapOverlay(stateData, minPopulation, maxPopulation, stateGeoJson, 'usa');
                     viewer.entities.suspendEvents();
                     cachedEntities.usa.forEach(entity => entity.show = true);
                     viewer.entities.resumeEvents();
@@ -239,7 +225,14 @@ function switchView(type) {
             viewer.camera.flyTo({
                 destination: Cesium.Cartesian3.fromDegrees(-120.7401, 47.7511, 1000000),
                 duration: 1, // Reduce duration to improve performance
-                complete: () => {
+                complete: async () => {
+                    const waGeoJson = JSON.parse(localStorage.getItem('waGeoJson'));
+                    const minPopulation = Math.min(...waGeoJson.features.map(feature => feature.properties.population));
+                    const maxPopulation = Math.max(...waGeoJson.features.map(feature => feature.properties.population));
+                    await createHeatmapOverlay(waGeoJson.features.map(feature => ({
+                        name: feature.properties.NAME,
+                        population: feature.properties.population
+                    })), minPopulation, maxPopulation, waGeoJson, 'wa');
                     viewer.entities.suspendEvents();
                     cachedEntities.wa.forEach(entity => entity.show = true);
                     viewer.entities.resumeEvents();
@@ -256,20 +249,10 @@ function switchView(type) {
 }
 
 preloadData().then(data => {
-   console.log('Preloaded Data:', data);
-       addPopulationLines(data.populationData);
-       loadGeoJsonData('data/states.geojson').then(dataSource => {
-           countiesDataSource = dataSource;
-           console.log('Loaded State GeoJSON Data:', data.stateGeoJson);
-           createHeatmapOverlay(data.stateData, Math.min(...data.stateData.map(item => item.population)), Math.max(...data.stateData.map(item => item.population)), data.stateGeoJson, 'usa');
-       });
-       loadGeoJsonData('data/wa_counties.geojson').then(dataSource => {
-           waDataSource = dataSource;
-           console.log('Loaded WA GeoJSON Data:', data.waGeoJson);
-           createHeatmapOverlay(data.waData, Math.min(...data.waData.map(item => item.population)), Math.max(...data.waData.map(item => item.population)), data.waGeoJson, 'wa');
-       });
-       document.getElementById('loadingScreen').style.display = 'none';
-   }).catch(error => {
-       console.error('Error during preload:', error);
-       document.getElementById('loadingScreen').style.display = 'none';
-   });
+    console.log('Preloaded Data:', data);
+    addPopulationLines(data.populationData); // Add this line to ensure population pillars are rendered
+    document.getElementById('loadingScreen').style.display = 'none';
+}).catch(error => {
+    console.error('Error during preload:', error);
+    document.getElementById('loadingScreen').style.display = 'none';
+});
