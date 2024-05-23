@@ -101,13 +101,13 @@ function hideAllEntities() {
 async function createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonData, viewKey) {
     console.time(`createHeatmapOverlay: ${viewKey}`);
     const colors = [
-        Cesium.Color.fromCssColorString("#2D5FB9"),
-        Cesium.Color.fromCssColorString("#3088B9"),
-        Cesium.Color.fromCssColorString("#1CF0FF"),
-        Cesium.Color.fromCssColorString("#45C78F"),
-        Cesium.Color.fromCssColorString("#35FF73"),
-        Cesium.Color.fromCssColorString("#FFC26D"),
-        Cesium.Color.fromCssColorString("#FF8080")
+        Cesium.Color.fromCssColorString("#FCD5D8"),
+        Cesium.Color.fromCssColorString("#F5A6A8"),
+        Cesium.Color.fromCssColorString("#F0837D"),
+        Cesium.Color.fromCssColorString("#F45352"),
+        Cesium.Color.fromCssColorString("#F12D18"),
+        Cesium.Color.fromCssColorString("#F91E06"),
+        Cesium.Color.fromCssColorString("#DB1D02")
     ];
 
     geoJsonData.features.forEach(feature => {

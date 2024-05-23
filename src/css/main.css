@@ -22,6 +22,7 @@ html, body, #cesiumContainer {
     border-radius: 5px;
     opacity: 0.8; /* 80% opacity */
     transition: opacity 0.3s; /* Smooth transition */
+    font-family: sans-serif;
 }
 
 #buttonsContainer button:hover {
@@ -42,6 +43,7 @@ html, body, #cesiumContainer {
 #legend h3 {
     margin: 0;
     font-size: 25px;
+    font-family: sans-serif;
 }
 
 #colorBar {
@@ -59,6 +61,7 @@ html, body, #cesiumContainer {
     display: flex;
     justify-content: space-between;
     margin-top: 5px;
+    font-family: sans-serif;
 }
 
 #labels span {
