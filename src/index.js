@@ -96,8 +96,8 @@ function createHeatmapOverlay(geoJsonData, viewKey) {
         Cesium.Color.fromCssColorString("#F0837D"),
         Cesium.Color.fromCssColorString("#F45352"),
         Cesium.Color.fromCssColorString("#F12D18"),
-        Cesium.Color.fromCssColorString("#F91E06"),
-        Cesium.Color.fromCssColorString("#DB1D02")
+        Cesium.Color.fromCssColorString("#E01C06"),
+        Cesium.Color.fromCssColorString("#B11602")
     ];
 
     geoJsonData.features.forEach(feature => {
