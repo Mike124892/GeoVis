@@ -100,15 +100,20 @@ function hideAllEntities() {
 
 async function createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonData, viewKey) {
     console.time(`createHeatmapOverlay: ${viewKey}`);
+    const colors = [
+        Cesium.Color.fromCssColorString("#2D5FB9"),
+        Cesium.Color.fromCssColorString("#3088B9"),
+        Cesium.Color.fromCssColorString("#1CF0FF"),
+        Cesium.Color.fromCssColorString("#45C78F"),
+        Cesium.Color.fromCssColorString("#35FF73"),
+        Cesium.Color.fromCssColorString("#FFC26D"),
+        Cesium.Color.fromCssColorString("#FF8080")
+    ];
+
     geoJsonData.features.forEach(feature => {
         var properties = feature.properties;
-        var population = properties.population;
-        var normalizedPopulation = (population - minPopulation) / (maxPopulation - minPopulation);
-        var color = Cesium.Color.fromHsl(
-            0.66 - (0.66 * normalizedPopulation), // Hue
-            1.0,
-            0.5 + (0.25 * normalizedPopulation)  // Lightness
-        );
+        var heatmapLevel = properties.heatmap_level - 1; // heatmap_level is 1-based, colors array is 0-based
+        var color = colors[heatmapLevel];
 
         var entityId = `heatmap-${properties.NAME || properties.name}`;
         var existingEntity = viewer.entities.getById(entityId);

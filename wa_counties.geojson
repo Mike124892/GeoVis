@@ -5,8 +5,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "King",
-        "population": 2163257,
-        "heatmap_level": 7
+        "population": 2163257
       },
       "geometry": {
         "type": "Polygon",
@@ -160,8 +159,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Pierce",
-        "population": 859840,
-        "heatmap_level": 7
+        "population": 859840
       },
       "geometry": {
         "type": "Polygon",
@@ -307,8 +305,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Snohomish",
-        "population": 786620,
-        "heatmap_level": 7
+        "population": 786620
       },
       "geometry": {
         "type": "Polygon",
@@ -414,8 +411,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Spokane",
-        "population": 497875,
-        "heatmap_level": 7
+        "population": 497875
       },
       "geometry": {
         "type": "Polygon",
@@ -477,8 +473,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Clark",
-        "population": 465384,
-        "heatmap_level": 7
+        "population": 465384
       },
       "geometry": {
         "type": "Polygon",
@@ -576,8 +571,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Thurston",
-        "population": 274684,
-        "heatmap_level": 6
+        "population": 274684
       },
       "geometry": {
         "type": "Polygon",
@@ -707,8 +701,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Kitsap",
-        "population": 262475,
-        "heatmap_level": 6
+        "population": 262475
       },
       "geometry": {
         "type": "Polygon",
@@ -786,8 +779,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Yakima",
-        "population": 249325,
-        "heatmap_level": 6
+        "population": 249325
       },
       "geometry": {
         "type": "Polygon",
@@ -893,8 +885,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Whatcom",
-        "population": 216812,
-        "heatmap_level": 6
+        "population": 216812
       },
       "geometry": {
         "type": "Polygon",
@@ -1008,8 +999,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Benton",
-        "population": 194168,
-        "heatmap_level": 6
+        "population": 194168
       },
       "geometry": {
         "type": "Polygon",
@@ -1119,8 +1109,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Skagit",
-        "population": 123907,
-        "heatmap_level": 6
+        "population": 123907
       },
       "geometry": {
         "type": "Polygon",
@@ -1242,8 +1231,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Cowlitz",
-        "population": 105112,
-        "heatmap_level": 5
+        "population": 105112
       },
       "geometry": {
         "type": "Polygon",
@@ -1337,8 +1325,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Grant",
-        "population": 94860,
-        "heatmap_level": 5
+        "population": 94860
       },
       "geometry": {
         "type": "Polygon",
@@ -1476,8 +1463,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Franklin",
-        "population": 90660,
-        "heatmap_level": 5
+        "population": 90660
       },
       "geometry": {
         "type": "Polygon",
@@ -1571,8 +1557,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Island",
-        "population": 81636,
-        "heatmap_level": 5
+        "population": 81636
       },
       "geometry": {
         "type": "Polygon",
@@ -1666,8 +1651,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Lewis",
-        "population": 76947,
-        "heatmap_level": 5
+        "population": 76947
       },
       "geometry": {
         "type": "Polygon",
@@ -1749,8 +1733,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Chelan",
-        "population": 75757,
-        "heatmap_level": 4
+        "population": 75757
       },
       "geometry": {
         "type": "Polygon",
@@ -1964,8 +1947,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Clallam",
-        "population": 74487,
-        "heatmap_level": 4
+        "population": 74487
       },
       "geometry": {
         "type": "Polygon",
@@ -2107,8 +2089,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Grays Harbor",
-        "population": 71967,
-        "heatmap_level": 4
+        "population": 71967
       },
       "geometry": {
         "type": "Polygon",
@@ -2206,8 +2187,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Mason",
-        "population": 62627,
-        "heatmap_level": 4
+        "population": 62627
       },
       "geometry": {
         "type": "Polygon",
@@ -2321,8 +2301,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Walla Walla",
-        "population": 60236,
-        "heatmap_level": 4
+        "population": 60236
       },
       "geometry": {
         "type": "Polygon",
@@ -2424,8 +2403,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Whitman",
-        "population": 48593,
-        "heatmap_level": 4
+        "population": 48593
       },
       "geometry": {
         "type": "Polygon",
@@ -2535,8 +2513,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Kittitas",
-        "population": 44825,
-        "heatmap_level": 3
+        "population": 44825
       },
       "geometry": {
         "type": "Polygon",
@@ -2682,8 +2659,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Stevens",
-        "population": 44214,
-        "heatmap_level": 3
+        "population": 44214
       },
       "geometry": {
         "type": "Polygon",
@@ -2857,8 +2833,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Okanogan",
-        "population": 41638,
-        "heatmap_level": 3
+        "population": 41638
       },
       "geometry": {
         "type": "Polygon",
@@ -3076,8 +3051,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Douglas",
-        "population": 41371,
-        "heatmap_level": 3
+        "population": 41371
       },
       "geometry": {
         "type": "Polygon",
@@ -3267,8 +3241,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Jefferson",
-        "population": 30856,
-        "heatmap_level": 3
+        "population": 30856
       },
       "geometry": {
         "type": "Polygon",
@@ -3386,8 +3359,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Asotin",
-        "population": 22337,
-        "heatmap_level": 2
+        "population": 22337
       },
       "geometry": {
         "type": "Polygon",
@@ -3481,8 +3453,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Klickitat",
-        "population": 21396,
-        "heatmap_level": 2
+        "population": 21396
       },
       "geometry": {
         "type": "Polygon",
@@ -3624,8 +3595,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Pacific",
-        "population": 21281,
-        "heatmap_level": 2
+        "population": 21281
       },
       "geometry": {
         "type": "Polygon",
@@ -3719,8 +3689,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Adams",
-        "population": 19452,
-        "heatmap_level": 2
+        "population": 19452
       },
       "geometry": {
         "type": "Polygon",
@@ -3774,8 +3743,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "San Juan",
-        "population": 16473,
-        "heatmap_level": 2
+        "population": 16473
       },
       "geometry": {
         "type": "Polygon",
@@ -3861,8 +3829,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Pend Oreille",
-        "population": 13219,
-        "heatmap_level": 2
+        "population": 13219
       },
       "geometry": {
         "type": "Polygon",
@@ -3956,8 +3923,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Skamania",
-        "population": 11620,
-        "heatmap_level": 1
+        "population": 11620
       },
       "geometry": {
         "type": "Polygon",
@@ -4051,8 +4017,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Lincoln",
-        "population": 10435,
-        "heatmap_level": 1
+        "population": 10435
       },
       "geometry": {
         "type": "Polygon",
@@ -4138,8 +4103,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Ferry",
-        "population": 7576,
-        "heatmap_level": 1
+        "population": 7576
       },
       "geometry": {
         "type": "Polygon",
@@ -4273,8 +4237,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Wahkiakum",
-        "population": 4189,
-        "heatmap_level": 1
+        "population": 4189
       },
       "geometry": {
         "type": "Polygon",
@@ -4352,8 +4315,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Columbia",
-        "population": 4001,
-        "heatmap_level": 1
+        "population": 4001
       },
       "geometry": {
         "type": "Polygon",
@@ -4439,8 +4401,7 @@
       "type": "Feature",
       "properties": {
         "NAME": "Garfield",
-        "population": 2224,
-        "heatmap_level": 1
+        "population": 2224
       },
       "geometry": {
         "type": "Polygon",
