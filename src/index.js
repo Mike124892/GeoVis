@@ -41,9 +41,8 @@ async function fetchPopulationData() {
 
 function addPopulationLines(data) {
     console.time('addPopulationLines');
-    var populations = data.map(city => city.population);
-    var minPopulation = Math.min(...populations);
-    var maxPopulation = Math.max(...populations);
+    var minPopulation = Math.min(...data.map(city => city.population));
+    var maxPopulation = Math.max(...data.map(city => city.population));
 
     data.forEach(function(city) {
         var height = city.population / 5000;
@@ -69,17 +68,6 @@ function addPopulationLines(data) {
     console.timeEnd('addPopulationLines');
 }
 
-// Load GeoJSON data and add it to the viewer
-async function loadGeoJsonData(url) {
-    console.time(`loadGeoJsonData: ${url}`);
-    const dataSource = await Cesium.GeoJsonDataSource.load(url);
-    dataSource.show = false;  // Hide data source initially
-    viewer.dataSources.add(dataSource);
-    console.timeEnd(`loadGeoJsonData: ${url}`);
-    return dataSource;
-}
-
-let statesDataSource, waDataSource;
 let cachedEntities = {
     global: [],
     usa: [],
@@ -93,12 +81,14 @@ function hideAllEntities() {
         entity.show = false;
     });
     viewer.entities.resumeEvents();
-    if (statesDataSource) statesDataSource.show = false;
-    if (waDataSource) waDataSource.show = false;
     console.timeEnd('hideAllEntities');
 }
 
-async function createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonData, viewKey) {
+function flattenCoordinates(coordinates) {
+    return coordinates.flat(Infinity);
+}
+
+function createHeatmapOverlay(geoJsonData, viewKey) {
     console.time(`createHeatmapOverlay: ${viewKey}`);
     const colors = [
         Cesium.Color.fromCssColorString("#FCD5D8"),
@@ -116,66 +106,60 @@ async function createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonD
         var color = colors[heatmapLevel];
 
         var entityId = `heatmap-${properties.NAME || properties.name}`;
-        var existingEntity = viewer.entities.getById(entityId);
-        if (!existingEntity) {
-            try {
-                var coordinates = feature.geometry.coordinates;
-                if (feature.geometry.type === 'Polygon') {
-                    coordinates = coordinates.flat(2);
-                } else if (feature.geometry.type === 'MultiPolygon') {
-                    coordinates = coordinates.flat(3);
-                }
+        var coordinates = flattenCoordinates(feature.geometry.coordinates);
 
-                if (coordinates.some(coord => typeof coord !== 'number')) {
-                    throw new Error('Invalid coordinates');
-                }
-
-                var entity = viewer.entities.add({
-                    id: entityId,
-                    name: properties.NAME || properties.name,
-                    polygon: {
-                        hierarchy: Cesium.Cartesian3.fromDegreesArray(coordinates),
-                        material: color.withAlpha(0.6)
-                    }
-                });
-                cachedEntities[viewKey].push(entity);
-            } catch (error) {
-                console.error('Error creating entity:', error);
-            }
-        } else {
-            existingEntity.polygon.material = color.withAlpha(0.6);
-            existingEntity.show = true;
-            cachedEntities[viewKey].push(existingEntity);
+        if (coordinates.some(coord => typeof coord !== 'number')) {
+            console.error('Invalid coordinates', coordinates);
+            return;
         }
+
+        var entity = viewer.entities.add({
+            id: entityId,
+            name: properties.NAME || properties.name,
+            polygon: {
+                hierarchy: Cesium.Cartesian3.fromDegreesArray(coordinates),
+                material: color.withAlpha(0.6),
+                outline: true,
+                outlineColor: Cesium.Color.BLACK
+            },
+            label: {
+                text: properties.NAME || properties.name,
+                fillColor: Cesium.Color.BLACK,
+                verticalOrigin: Cesium.VerticalOrigin.TOP,
+                pixelOffset: new Cesium.Cartesian2(0, -20)
+            }
+        });
+        cachedEntities[viewKey].push(entity);
     });
     console.timeEnd(`createHeatmapOverlay: ${viewKey}`);
 }
 
-// Button event listeners
 document.getElementById('globalPopulationBtn').addEventListener('click', () => switchView('global'));
 document.getElementById('usaPopulationBtn').addEventListener('click', () => switchView('usa'));
 document.getElementById('waPopulationBtn').addEventListener('click', () => switchView('wa'));
 
-// Initialize the application
 async function preloadData() {
     console.time('preloadData');
     const populationData = await fetchPopulationData();
-    const stateGeoJson = await fetch('data/states.geojson').then(response => response.json());
-    const waGeoJson = await fetch('data/wa_counties.geojson').then(response => response.json());
+    const [stateGeoJson, waGeoJson] = await Promise.all([
+        fetch('data/states.geojson').then(response => response.json()),
+        fetch('data/wa_counties.geojson').then(response => response.json())
+    ]);
 
-    const stateData = stateGeoJson.features.map(feature => ({
-        name: feature.properties.name,
-        population: feature.properties.population
-    }));
-    localStorage.setItem('stateData', JSON.stringify(stateData));
     localStorage.setItem('stateGeoJson', JSON.stringify(stateGeoJson));
     localStorage.setItem('waGeoJson', JSON.stringify(waGeoJson));
+
+    // Parallelize the creation of entities
+    await Promise.all([
+        createHeatmapOverlay(stateGeoJson, 'usa'),
+        createHeatmapOverlay(waGeoJson, 'wa'),
+        addPopulationLines(populationData)
+    ]);
 
     console.timeEnd('preloadData');
 
     return {
         populationData,
-        stateData,
         stateGeoJson,
         waGeoJson
     };
@@ -184,20 +168,17 @@ async function preloadData() {
 function switchView(type) {
     console.time('switchView');
 
-    function hideGlobalEntities() {
-        cachedEntities.global.forEach(entity => entity.show = false);
-    }
-
     hideAllEntities(); // Hide all entities before showing the relevant ones
 
     switch(type) {
         case 'global':
+            document.getElementById('legend').style.display = 'none';
             viewer.entities.suspendEvents();
             cachedEntities.global.forEach(entity => entity.show = true);
             viewer.entities.resumeEvents();
             viewer.camera.flyTo({
                 destination: Cesium.Cartesian3.fromDegrees(0, 0, 30000000),
-                duration: 1, // Reduce duration to improve performance
+                duration: 1,
                 orientation: {
                     heading: Cesium.Math.toRadians(0.0),
                     pitch: Cesium.Math.toRadians(-90.0),
@@ -206,19 +187,13 @@ function switchView(type) {
             });
             break;
         case 'usa':
+            document.getElementById('legend').style.display = 'block';
+            viewer.entities.suspendEvents();
+            cachedEntities.usa.forEach(entity => entity.show = true);
+            viewer.entities.resumeEvents();
             viewer.camera.flyTo({
                 destination: Cesium.Cartesian3.fromDegrees(-99.1332, 38.9637, 5000000),
-                duration: 1, // Reduce duration to improve performance
-                complete: async () => {
-                    const stateGeoJson = JSON.parse(localStorage.getItem('stateGeoJson'));
-                    const stateData = JSON.parse(localStorage.getItem('stateData'));
-                    const minPopulation = Math.min(...stateData.map(item => item.population));
-                    const maxPopulation = Math.max(...stateData.map(item => item.population));
-                    await createHeatmapOverlay(stateData, minPopulation, maxPopulation, stateGeoJson, 'usa');
-                    viewer.entities.suspendEvents();
-                    cachedEntities.usa.forEach(entity => entity.show = true);
-                    viewer.entities.resumeEvents();
-                },
+                duration: 1,
                 orientation: {
                     heading: Cesium.Math.toRadians(0.0),
                     pitch: Cesium.Math.toRadians(-90.0),
@@ -227,21 +202,13 @@ function switchView(type) {
             });
             break;
         case 'wa':
+            document.getElementById('legend').style.display = 'block';
+            viewer.entities.suspendEvents();
+            cachedEntities.wa.forEach(entity => entity.show = true);
+            viewer.entities.resumeEvents();
             viewer.camera.flyTo({
                 destination: Cesium.Cartesian3.fromDegrees(-120.7401, 47.7511, 1000000),
-                duration: 1, // Reduce duration to improve performance
-                complete: async () => {
-                    const waGeoJson = JSON.parse(localStorage.getItem('waGeoJson'));
-                    const minPopulation = Math.min(...waGeoJson.features.map(feature => feature.properties.population));
-                    const maxPopulation = Math.max(...waGeoJson.features.map(feature => feature.properties.population));
-                    await createHeatmapOverlay(waGeoJson.features.map(feature => ({
-                        name: feature.properties.NAME,
-                        population: feature.properties.population
-                    })), minPopulation, maxPopulation, waGeoJson, 'wa');
-                    viewer.entities.suspendEvents();
-                    cachedEntities.wa.forEach(entity => entity.show = true);
-                    viewer.entities.resumeEvents();
-                },
+                duration: 1,
                 orientation: {
                     heading: Cesium.Math.toRadians(0.0),
                     pitch: Cesium.Math.toRadians(-90.0),
@@ -255,7 +222,6 @@ function switchView(type) {
 
 preloadData().then(data => {
     console.log('Preloaded Data:', data);
-    addPopulationLines(data.populationData); // Add this line to ensure population pillars are rendered
     document.getElementById('loadingScreen').style.display = 'none';
 }).catch(error => {
     console.error('Error during preload:', error);
