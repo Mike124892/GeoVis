@@ -98,15 +98,26 @@ function hideAllEntities() {
     console.timeEnd('hideAllEntities');
 }
 
-// Function to create a heatmap overlay
+function flattenCoordinates(coordinates) {
+    const flatCoords = [];
+    coordinates.forEach(coord => {
+        if (typeof coord[0] === 'number') {
+            flatCoords.push(...coord);
+        } else {
+            flatCoords.push(...flattenCoordinates(coord));
+        }
+    });
+    return flatCoords;
+}
+
 async function createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonData, viewKey) {
     console.time(`createHeatmapOverlay: ${viewKey}`);
     geoJsonData.features.forEach(feature => {
         var properties = feature.properties;
-        var populationEntry = data.find(entry => entry.region === properties.name || entry.subregion === properties.NAME);
-        
+        var populationEntry = data.find(entry => entry.name === properties.name);
+
         if (populationEntry) {
-            var population = parseInt(populationEntry.population);
+            var population = parseInt(properties.population);
             var normalizedPopulation = (population - minPopulation) / (maxPopulation - minPopulation);
             var color = Cesium.Color.fromHsl(
                 0.66 - (0.66 * normalizedPopulation), // Hue
@@ -114,20 +125,24 @@ async function createHeatmapOverlay(data, minPopulation, maxPopulation, geoJsonD
                 0.5 + (0.25 * normalizedPopulation)  // Lightness
             );
 
-            var entityId = `heatmap-${properties.name || properties.NAME}`;
+            var entityId = `heatmap-${properties.name}`;
             var existingEntity = viewer.entities.getById(entityId);
             if (!existingEntity) {
                 try {
-                    var coordinates = feature.geometry.coordinates.flat(2);
-                    coordinates.forEach((coord, index) => {
-                        if (typeof coord !== 'number') {
-                            console.error(`Invalid coordinate at index ${index}:`, coord);
-                        }
-                    });
+                    var coordinates = feature.geometry.coordinates;
+                    if (feature.geometry.type === 'Polygon') {
+                        coordinates = coordinates.flat(2);
+                    } else if (feature.geometry.type === 'MultiPolygon') {
+                        coordinates = coordinates.flat(3);
+                    }
+
+                    if (coordinates.some(coord => typeof coord !== 'number')) {
+                        throw new Error('Invalid coordinates');
+                    }
 
                     var entity = viewer.entities.add({
                         id: entityId,
-                        name: properties.name || properties.NAME,
+                        name: properties.name,
                         polygon: {
                             hierarchy: Cesium.Cartesian3.fromDegreesArray(coordinates),
                             material: color.withAlpha(0.6)
@@ -156,14 +171,17 @@ document.getElementById('waPopulationBtn').addEventListener('click', () => switc
 async function preloadData() {
     console.time('preloadData');
     const populationData = await fetchPopulationData();
-    const stateData = await fetch('data/statePop.json').then(response => response.json());
+    const stateGeoJson = await fetch('data/states.geojson').then(response => response.json());
     const waData = await fetch('data/wa_countiesPop.json').then(response => response.json());
-    const stateGeoJson = await fetch('data/states.json').then(response => response.json());
     const waGeoJson = await fetch('data/wa_counties.geojson').then(response => response.json());
 
+    const stateData = stateGeoJson.features.map(feature => ({
+        name: feature.properties.name,
+        population: feature.properties.population
+    }));
     localStorage.setItem('stateData', JSON.stringify(stateData));
-    localStorage.setItem('waData', JSON.stringify(waData));
     localStorage.setItem('stateGeoJson', JSON.stringify(stateGeoJson));
+    localStorage.setItem('waData', JSON.stringify(waData));
     localStorage.setItem('waGeoJson', JSON.stringify(waGeoJson));
 
     console.timeEnd('preloadData');
@@ -171,8 +189,8 @@ async function preloadData() {
     return {
         populationData,
         stateData,
-        waData,
         stateGeoJson,
+        waData,
         waGeoJson
     };
 }
@@ -238,18 +256,20 @@ function switchView(type) {
 }
 
 preloadData().then(data => {
-    addPopulationLines(data.populationData);
-    loadGeoJsonData('data/states.json').then(dataSource => { 
-        countiesDataSource = dataSource; 
-        createHeatmapOverlay(data.stateData, Math.min(...data.stateData.map(item => item.population)), Math.max(...data.stateData.map(item => item.population)), data.stateGeoJson, 'usa');
-    });
-    loadGeoJsonData('data/wa_counties.geojson').then(dataSource => { 
-        waDataSource = dataSource; 
-        createHeatmapOverlay(data.waData, Math.min(...data.waData.map(item => item.population)), Math.max(...data.waData.map(item => item.population)), data.waGeoJson, 'wa');
-    });
-    // Hide loading screen
-    document.getElementById('loadingScreen').style.display = 'none';
-}).catch(error => {
-    console.error(error);
-    document.getElementById('loadingScreen').style.display = 'none';
-});
+   console.log('Preloaded Data:', data);
+       addPopulationLines(data.populationData);
+       loadGeoJsonData('data/states.geojson').then(dataSource => {
+           countiesDataSource = dataSource;
+           console.log('Loaded State GeoJSON Data:', data.stateGeoJson);
+           createHeatmapOverlay(data.stateData, Math.min(...data.stateData.map(item => item.population)), Math.max(...data.stateData.map(item => item.population)), data.stateGeoJson, 'usa');
+       });
+       loadGeoJsonData('data/wa_counties.geojson').then(dataSource => {
+           waDataSource = dataSource;
+           console.log('Loaded WA GeoJSON Data:', data.waGeoJson);
+           createHeatmapOverlay(data.waData, Math.min(...data.waData.map(item => item.population)), Math.max(...data.waData.map(item => item.population)), data.waGeoJson, 'wa');
+       });
+       document.getElementById('loadingScreen').style.display = 'none';
+   }).catch(error => {
+       console.error('Error during preload:', error);
+       document.getElementById('loadingScreen').style.display = 'none';
+   });
