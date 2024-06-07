@@ -1,2 +1,0 @@
-/*! For license information please see chunk-RSHJDQU4.js.LICENSE.txt */
-import{a as w}from"./chunk-KROATL7C.js";var C={computePositions:function(t,o,a,r,n){let s,e=.5*t,i=-e,c=r+r,u=new Float64Array(3*(n?2*c:c)),f=0,h=0,l=n?3*c:0,m=n?3*(c+r):3*r;for(s=0;s<r;s++){let t=s/r*w.TWO_PI,c=Math.cos(t),p=Math.sin(t),C=c*a,A=p*a,M=c*o,O=p*o;u[h+l]=C,u[h+l+1]=A,u[h+l+2]=i,u[h+m]=M,u[h+m+1]=O,u[h+m+2]=e,h+=3,n&&(u[f++]=C,u[f++]=A,u[f++]=i,u[f++]=M,u[f++]=O,u[f++]=e)}return u}},Y=C;export{Y as a};
